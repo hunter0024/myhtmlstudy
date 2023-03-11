@@ -1,9 +1,10 @@
 <style>
+
   /****************PC화면*******************/
   @media all and (min-width: 760px) {
     .sliderBody {
         height: 70vh;
-        background-color: darkcyan;
+        /*background-color: darkcyan;*/
     }
   
     .slider__inner {
@@ -12,19 +13,22 @@
     }
   
     .link{
+	    position: relative;
       top: calc(100% - 71px);
       /*left: calc(100% - 69px);*/
-      margin:0 auto;
+    }
+	
+	.link_1{
+      display: inline-block;
       width: 120px;
       height: 40px;
       line-height:40px;
       text-align:center;
       
-      background:rgb(255, 255,255,0.8);
+      background:rgb(255, 255, 255);
       font-size:11px;
       letter-spacing: 0.5px;
       z-index:999999999;
-      
     }
       
     .slide {
@@ -177,32 +181,34 @@
  /****************모바일화면*******************/
  @media all and (max-width:759px) {
    .sliderBody {
-     height: 35vh;
-     background-color: brown;
+     height: 45vh;
+     /*background-color: brown;*/
    }
  
    .slider__inner {
-     top: -12%;
-     height: 80vh;
+     top: 0;
+     height: 85vh;
    }
  
    .link{
-     top: calc(100% - 40px);
-
-     margin:0 auto;
-     width: 75px;
-     height: 30px;
-     line-height:28px;
-     text-align:center;
-
-     background:rgb(255, 255,255,0.8);
-     font-size:11px;
+	   position: relative;
+     top: calc(100% - 38px);
+   }
+   
+   .link_1{ 
+     display: inline-block;
+     width: 90px;
+     height: 24px;
+     line-height: 24px;
+	 text-align:center;
+     background:rgb(255, 255, 255);
+     font-size:10px;
      letter-spacing: 0.5px;
      z-index:999999999;
-
    }
+   
    .slide {
-     margin-left:50px;
+     margin-left:-50px;
    }
 
    .slide_1 {
@@ -336,6 +342,7 @@
       bottom: 0;
       right: 0;
       opacity: 0.9;
+      background-color: #f2f2f4
     }
     
     .slide__bg_9 {
@@ -407,6 +414,8 @@
    -ms-transform: scale(1);
    -o-transform: scale(1);
    transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+
+   text-align: center;
  }
  
  .slide__bg:hover {
@@ -419,63 +428,67 @@
  }
  
  .link {
-   display: none; 
-   position: relative;
+   display: none;
    opacity: 0.9;
    cursor: pointer;
    transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
 
  }
+ .link_1 {
+   opacity: 0.9;
+   cursor: pointer;
+   transition: all 0.3s ease-in-out;   /* 부드러운 모션을 위해 추가*/
+ }
+  
 </style>
 
-
 <div class="sliderBody">
-  
+
   <div  class="slider js-slider">
     <div class="slider__inner js-slider__inner">
       <div class="slide slide_1 js-slide">
         <div class="slide__bg slide__bg_1" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/b5dd91ab8eecc.jpg');">
-          <a href="https://www.hwittu.com/ALL/?idx=219"><div class="link link_1">see more→</div></a> 
+          <a class="link" href="https://www.hwittu.com/ALL/?idx=219"><div class="link_1">see more→</div></a> 
         </div>
       </div>
       <div  class="slide slide_2 js-slide">
         <div  class="slide__bg slide__bg_2" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/8b4db75a91c12.jpg');">
-          <a href=" https://www.hwittu.com/ALL/?idx=212"><div class="link link_2">see more→</div></a>
+          <a class="link" href=" https://www.hwittu.com/ALL/?idx=212"><div class="link_1">see more→</div></a>
         </div>
       </div>
       <div class="slide slide_3 js-slide">
         <div class="slide__bg slide__bg_3" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/0984614b58caf.jpg');">
-          <a href="https://www.hwittu.com/ALL/?idx=215"><div class="link link_3">see more→</div></a>
+          <a class="link" href="https://www.hwittu.com/ALL/?idx=215"><div class="link_1">see more→</div></a>
         </div>
       </div>
       <div class="slide slide_4 js-slide">
         <div class="slide__bg slide__bg_4" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/841c808926d59.jpg');">
-          <a href="https://hwittu.imweb.me/ALL/?idx=78"><div class="link link_4">see more→</div></a>
+          <a class="link" href="https://hwittu.imweb.me/ALL/?idx=78"><div class="link_1">see more→</div></a>
         </div>
       </div>
       <div class="slide slide_5 js-slide">
         <div class="slide__bg slide__bg_5" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/14cb5f2c36a66.jpg');">
-          <a href="https://hwittu.imweb.me/ALL/?idx=208"><div class="link link_5">see more→</div></a>
+          <a class="link" href="https://hwittu.imweb.me/ALL/?idx=208"><div class="link_1">see more→</div></a>
         </div>
       </div>
       <div class="slide slide_6 js-slide">
         <div class="slide__bg slide__bg_6" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/e2074afad5f28.jpg');">
-          <a href="https://hwittu.imweb.me/ALL/?idx=206"><div class="link link_6">see more→</div></a>
+          <a class="link" href="https://hwittu.imweb.me/ALL/?idx=206"><div class="link_1">see more→</div></a>
         </div>
       </div>
       <div class="slide slide_7 js-slide">
         <div class="slide__bg slide__bg_7" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/078dc3006213f.jpg');">
-          <a href="https://hwittu.imweb.me/ALL/?idx=195"><div class="link link_7">Go Shop→</div></a>
+          <a class="link" href="https://hwittu.imweb.me/ALL/?idx=195"><div class="link_1">Go Shop→</div></a>
         </div>
       </div>
       <div class="slide slide_8 js-slide">
         <div class="slide__bg slide__bg_8" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/466bd73524a34.jpg');">
-          <a href="https://hwittu.imweb.me/ALL/?idx=162"><div class="link link_8">see more→</div></a>
+          <a class="link" href="https://hwittu.imweb.me/ALL/?idx=162"><div class="link_1">see more→</div></a>
         </div>
       </div>
       <div class="slide slide_9 js-slide">
         <div class="slide__bg slide__bg_9" style="background-image: url('https://cdn.imweb.me/thumbnail/20220928/bba36d89ccaa6.jpg');">
-          <a href="https://hwittu.imweb.me/ALL/?idx=207"><div class="link link_9">see more→</div></a>
+          <a class="link" href="https://hwittu.imweb.me/ALL/?idx=207"><div class="link_1">see more→</div></a>
         </div>
       </div>
     </div>
@@ -538,7 +551,7 @@
         ease: options.ease || 0.04, /*드래그시 이동되는 픽셀 가중치*/
         speed: options.speed || 1.0, /*드래그시 속도*/
         mobileSpeed: options.mobileSpeed || 3.0, /*모바일드래그시 속도*/
-        velocity: 10, /* 기울기*/
+        velocity: 1, /* 기울기*/
         scroll: options.scroll || false };
 
       this.slider = document.querySelector('.js-slider');
@@ -559,7 +572,7 @@
 
       this.minWidth = 760; /*PC, 모바일 구분 Width*/
       this.min = 150;
-      this.minMobile = 30;
+      this.minMobile = 120;
       this.max = 0;
 
       this.maxFix = 350;

@@ -1,0 +1,34 @@
+<style>
+  
+</style>
+
+<script>
+  function wait(sec) {
+	  let start = Date.now(), now = start;
+	  while (now - start < sec * 1000) {
+		  now = Date.now();
+	  }
+  }
+
+  $(document).ready(function(){
+	  $('._shop_item').hover(function() {
+		  console.log('hover');
+	  }, function(){
+		  console.log('out');      
+	  });
+	/*
+	  $('.shop-item-thumb').on("click", function(){
+		  console.log('click start');
+		  wait(0.5);
+		  console.log('click end');
+	  });*/
+	
+	  $('._org_img').click(function() {
+		  console.log('click start');
+		  wait(0.5);
+		  console.log('click end');
+
+	  });
+  });
+
+</script>

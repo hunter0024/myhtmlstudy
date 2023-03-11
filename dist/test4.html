@@ -1,0 +1,517 @@
+<style>
+    .color_tools {
+        margin-top: -2px;
+        margin-bottom: 12px;
+        line-height: 9px;
+        letter-spacing: -1px;
+    }
+
+    .radio-styled:not(ie8).radio_color_option.small input~span {
+        cursor: auto;
+        width: 9px;
+        height: 9px;
+    }
+
+    .radio-styled:not(ie8).radio_color_option {
+        margin: 0 2px 0 0;
+    }
+
+    .shop-content .shop-tools .down-btn,
+    .shop-content .shop-tools .float_l {
+        margin: 5px 0;
+    }
+
+    .thumb-row {
+        margin: 0 -15px;
+        clear: both;
+    }
+
+    .thumb-row .shop-item {
+        padding: 0 15px;
+    }
+
+    .thumb-fluid.show_rendering .shop-item a>img {
+        image-rendering: -webkit-optimize-contrast;
+    }
+
+    .shop-item .shop-item-thumb img {
+        border: 0px solid;
+    }
+
+    .shop-item .item-icon .im-ico-liked {
+        color: #e9b4b1;
+    }
+
+    .thumb-row .shop-item.off {
+        padding: 15px !important;
+    }
+
+    .shop-item .item-detail {
+        text-align: center;
+    }
+
+    .shop-item .item-summary {
+        text-align: center;
+    }
+
+    .shop-item .item-summary .item-summary-link {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .shop-item .item-overlay {
+        color: #565656;
+    }
+
+    .shop-item .item-pay>h2,
+    .shop-item .item-overlay h2 {
+        font-size: 14px;
+        font-weight: normal
+    }
+
+    .shop-item .item-detail .item-icon {
+        margin-top: 0.75em;
+    }
+
+    .shop-item .item-detail .item-icon>span {
+        margin-top: 0.75em;
+        display: inline-block;
+    }
+
+    .shop-item .item-detail .item-icon>span,
+    .shop-item .item-detail .item-icon>span a {
+        font-size: 14px;
+    }
+
+    .shop-item .item-pay>h2>a {
+        color: #565656;
+    }
+
+    .shop-item .item-summary>p,
+    .shop-item .item-summary>ul {
+        margin-bottom: 0;
+    }
+
+    .shop-item .item-summary,
+    .shop-item .item-summary p,
+    .shop-item .item-summary span {
+        font-size: 14px !important;
+        color: ;
+    }
+
+    .shop-item .item-detail .item-pay-detail .pay,
+    .shop-item .item-overlay .item-pay p.pay {
+        font-size: 13px;
+        color: #666666 !important;
+    }
+
+    .shop-item .item-detail .item-pay-detail .sale_pay,
+    .shop-item .item-detail .item-pay-detail .sale_pay {
+        font-size: 9.1px;
+    }
+
+    .shop-item .item-detail .item-pay .member_pay {
+        font-size: 14px;
+        color: !important;
+    }
+
+    .shop-item .sale_price {
+        text-decoration: line-through;
+        font-size: 11px;
+        opacity: 0.7;
+    }
+
+    .shop-item .sale_percentage {
+        color: #fe5356 !important;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .device_type_m .thumb-row .shop-item.off>.item-summary {
+        display: none !important;
+    }
+
+    .shop-item .item-detail .ns-icon>div {
+        float: left;
+    }
+
+    .shop-item .item-detail .ns-icon>div {
+        float: none;
+        vertical-align: top;
+    }
+
+    .shop-item .item-overlay .ns-icon>div,
+    .shop-item .item-detail .ns-icon>div {
+        margin: 0 5px 5px 0;
+    }
+
+    .shop-item .item-overlay .ns-icon>div:last-child,
+    .shop-item .item-detail .ns-icon>div:last-child {
+        margin: 0 0 5px 0;
+    }
+
+    .shop-item .item-detail .ns-icon>div {
+        margin-left: -1px;
+        vertical-align: middle;
+    }
+
+    .shop-item .item-detail .ns-icon>div:first-child {
+        margin-left: 0;
+    }
+
+    .shop-item .item-detail .ns-icon .prod_use_icon {
+        display: inline-block;
+    }
+
+    .shop-item .item-detail .ns-icon .prod_use_icon img {
+        width: auto;
+        max-width: 100%;
+        vertical-align: top;
+    }
+
+    .paging-block .more_btn {
+        margin: 20px 0;
+    }
+
+    .paging-block .more_btn_page {
+        display: none;
+    }
+
+    .shop-content .li_footer .prod_write {
+        text-align: right;
+    }
+
+    @media (max-width : 991px) {
+        .radio-styled:not(ie8).radio_color_option {
+            margin: 0 1px 4px 0;
+        }
+
+        .thumb-row .shop-item.off,
+        .thumb-row .shop-item {
+            padding: 0 7.5px !important;
+        }
+
+        .thumb-row .shop-item {
+            margin-bottom: 30px;
+        }
+
+        .options_hide_class .thumb-row .shop-item,
+        .thumb-row.m-list-type3 .shop-item {
+            margin-bottom: 15px;
+        }
+
+        .thumb-row {
+            margin: 0 -7.5px !important;
+            clear: both;
+        }
+
+        .thumb-fluid.show_rendering .shop-item a>img {
+            image-rendering: auto;
+        }
+
+        .thumb-row .shop-item.off>.item-summary {
+            display: none !important;
+        }
+    }
+
+    .shop-item .item-detail {
+        height: auto;
+    }
+
+    .shop-item {
+        margin-bottom: 30px;
+    }
+
+    @media (min-width : 768px) {
+        .thumb-row.hover_none .shop-item a:hover .item-overlay {
+            opacity: 0;
+        }
+
+        .thumb-row.hover_dark .shop-item a:hover .item-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hover_bright .shop-item a .item-overlay .item-pay,
+        .hover_image .shop-item a .item-overlay {
+            display: none !important;
+        }
+
+        .hover_detail .shop-item a .item-overlay .item-pay,
+        .hover_detail .shop-item a:hover .item-overlay .item-pay {
+            display: table;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hover_detail .shop-item a .item-overlay .item-pay>div,
+        .hover_detail .shop-item a:hover .item-overlay .item-pay>div {
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .hover_detail.hover_name_price .shop-item a .item-overlay .item-pay .ns-icon {
+            display: none;
+        }
+
+        .hover_image .shop-item a .hover_img,
+        .hover_image .shop-item a:hover .org_img {
+            position: absolute;
+            left: 0;
+            opacity: 0;
+            display: none;
+            top: 0;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            transition: .3s;
+        }
+
+        .hover_image .shop-item a:hover .hover_img {
+            position: static;
+            opacity: 1;
+            display: block;
+            -webkit-transition: .3s;
+            -moz-transition: .3s;
+            -o-transition: .3s;
+            transition: .3s;
+        }
+
+        .hover_image .shop-item a.hover_img_none .org_img {
+            position: static;
+            opacity: 1;
+        }
+    }
+
+    @media (max-width : 767px) {
+        .hover_image .shop-item a .hover_img {
+            display: none;
+        }
+
+        .paging-block .more_btn {
+            width: 100%;
+        }
+    }
+
+    @media (max-width : 991px) {
+        .color_tools {
+            margin: 0 0 8px;
+        }
+    }
+
+    ._color_option_img {
+        -webkit-transition: .3s opacity, .3s visibility;
+        -moz-transition: .3s opacity, .3s visibility;
+        -o-transition: .3s opacity, .3s visibility;
+        transition .3s opacity,
+        .3s visibility;
+    }
+
+    ._color_option_img[data-visible="false"] {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    ._color_option_img[data-visible="true"] {
+        opacity: 1;
+        visibility: visible;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<div class="thumb-row m-list-type2 hover_image thumb-item-3 _item_wrap " id="container_w202212304a4427e035066"
+    style="visibility: visible; margin: 0px -15px;">
+    <div class="shop-item _shop_item" style="width: 426px; padding: 0px 15px; height: auto;">
+        <div class="item-wrap" style="position: relative;">
+            <a href="/" class="_fade_link shop-item-thumb ">
+                <img data-prodcode="s20230228cf12a8dfd4694" alt=""
+                    src="https://cdn.imweb.me/thumbnail/20230228/c8a461cc3bd2b.png" class="_org_img org_img _lazy_img"
+                    data-original="https://cdn.imweb.me/thumbnail/20230228/c8a461cc3bd2b.png"
+                    data-src="https://cdn.imweb.me/thumbnail/20230228/c8a461cc3bd2b.png" style="display: inline;">
+                <img alt="" src="https://cdn.imweb.me/thumbnail/20230303/09123529817ed.png"
+                    class="_hover_img hover_img ">
+                <div class="item-overlay">
+                    <div class="item-pay">
+                        <div>
+                            <h2>Polvasal Soup bowl (Blue)</h2>
+                            <p class="pay inline-blocked" style=";font-weight:bold;">
+                                19,000원 </p>
+                            <div class="ns-icon clearfix">
+                                <!--<span class="new bg-brand">NEW</span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item-detail" style="">
+            <div class="item-pay">
+                <h2 style="display: ">
+                    <a class="_fade_link" href="?idx=22">Polvasal Soup bowl (Blue)</a>
+                </h2>
+                <div class="item-pay-detail">
+                    <p class="no-margin">
+                    </p>
+                    <p class="pay inline-blocked" style=";font-weight:bold;">
+                        19,000원 </p>
+                    <p></p>
+                </div>
+                <div class="ns-icon clearfix">
+                    <!--<span class="new bg-brand">NEW</span>-->
+                </div>
+            </div>
+            <div class="item-icon _unit_list unit-list">
+                <script>
+                    $(function () {
+                        $('._unit_list ._unit').each(function (index, item) {
+                            var data = item.dataset;
+                            item.innerHTML = nFormatter(Number(data.value), 1);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="shop-item _shop_item" style="width: 426px; padding: 0px 15px; height: auto;">
+        <div class="item-wrap" style="position: relative;">
+            <a href="/" class="_fade_link shop-item-thumb ">
+                <img data-prodcode="s202302286a41fbf3ca46d" alt=""
+                    src="https://cdn.imweb.me/thumbnail/20230303/b47bbe763df63.png" class="_org_img org_img _lazy_img"
+                    data-original="https://cdn.imweb.me/thumbnail/20230303/b47bbe763df63.png"
+                    data-src="https://cdn.imweb.me/thumbnail/20230303/b47bbe763df63.png" style="display: inline;">
+                <img alt="" src="https://cdn.imweb.me/thumbnail/20230303/9a4cda85f5736.png"
+                    class="_hover_img hover_img ">
+                <div class="item-overlay">
+                    <div class="item-pay">
+                        <div>
+                            <h2>Polvasal Soup bowl (Green)</h2>
+                            <p class="pay inline-blocked" style=";font-weight:bold;">
+                                19,000원 </p>
+                            <div class="ns-icon clearfix">
+                                <!--<span class="new bg-brand">NEW</span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item-detail" style="">
+            <div class="item-pay">
+                <h2 style="display: ">
+                    <a class="_fade_link" href="?idx=21">Polvasal Soup bowl (Green)</a>
+                </h2>
+                <div class="item-pay-detail">
+                    <p class="no-margin">
+                    </p>
+                    <p class="pay inline-blocked" style=";font-weight:bold;">
+                        19,000원 </p>
+                    <p></p>
+                </div>
+                <div class="ns-icon clearfix">
+                    <!--<span class="new bg-brand">NEW</span>-->
+                </div>
+            </div>
+            <div class="item-icon _unit_list unit-list">
+                <script>
+                    $(function () {
+                        $('._unit_list ._unit').each(function (index, item) {
+                            var data = item.dataset;
+                            item.innerHTML = nFormatter(Number(data.value), 1);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="shop-item _shop_item" style="width: 426px; padding: 0px 15px; height: auto;">
+        <div class="item-wrap" style="position: relative;">
+            <a href="/" class="_fade_link shop-item-thumb ">
+                <img data-prodcode="s202302284dec3a31926e2" alt=""
+                    src="https://cdn.imweb.me/thumbnail/20230303/f2ef906260c29.png" class="_org_img org_img _lazy_img"
+                    data-original="https://cdn.imweb.me/thumbnail/20230303/f2ef906260c29.png"
+                    data-src="https://cdn.imweb.me/thumbnail/20230303/f2ef906260c29.png" style="display: inline;">
+                <img alt="" src="https://cdn.imweb.me/thumbnail/20230303/a215d00cd79ee.png"
+                    class="_hover_img hover_img ">
+                <div class="item-overlay">
+                    <div class="item-pay">
+                        <div>
+                            <h2>Polvasal Soup bowl (Red)</h2>
+                            <p class="pay inline-blocked" style=";font-weight:bold;">
+                                19,000원 </p>
+                            <div class="ns-icon clearfix">
+                                <!--<span class="new bg-brand">NEW</span>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="item-detail" style="">
+            <div class="item-pay">
+                <h2 style="display: ">
+                    <a class="_fade_link" href="/">Polvasal Soup bowl (Red)</a>
+                </h2>
+                <div class="item-pay-detail">
+                    <p class="no-margin">
+                    </p>
+                    <p class="pay inline-blocked" style=";font-weight:bold;">
+                        19,000원 </p>
+                    <p></p>
+                </div>
+                <div class="ns-icon clearfix">
+                    <!--<span class="new bg-brand">NEW</span>-->
+                </div>
+            </div>
+            <div class="item-icon _unit_list unit-list">
+                <script>
+                    $(function () {
+                        $('._unit_list ._unit').each(function (index, item) {
+                            var data = item.dataset;
+                            item.innerHTML = nFormatter(Number(data.value), 1);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function wait(sec) {
+    let start = Date.now(), now = start;
+    while (now - start < sec * 1000) {
+        now = Date.now();
+    }
+}
+
+$(document).ready(function(){
+    $('._shop_item').hover(function() {
+        console.log('hover');
+    }, function(){
+        console.log('out');      
+    });
+
+    // $('.shop-item-thumb').click(function() {
+    //     console.log('click start');
+    //     wait(0.5);
+    //     console.log('click end');
+
+    // });
+    $('.shop-item-thumb').on("click", function(){
+        console.log('click start');
+        wait(0.5);
+        console.log('click end');
+    });
+
+
+});
+
+
+
+
+</script>
