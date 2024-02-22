@@ -1,0 +1,887 @@
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    div {
+        display: block;
+    }
+    li {
+        list-style: none;
+    }
+    button {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        outline: 0;
+    }
+
+    .estimateDetail_profile_infoWra {
+        position: relative;
+        right: 0;
+        margin-top: 20px;
+        width: 100%;
+        max-width: 790px;
+    }
+
+    .estimateDetail_profile_textArea {
+        position: relative;
+        min-height: 20.5em;
+        background: #fff;
+        border-radius: 7px;
+        padding: 28px 28px 79.5px;
+    }
+    
+    .estimate_detail_contants .select_option_area {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        margin: 1.88em 0 1.25em;
+    }
+    .estimate_detail_contants .select_option_area .select_option_label {
+        flex-shrink: 0;
+        width: 20%;
+        margin-top: 0.94em;
+        margin-right: 0.63em;
+        font-weight: bold;
+        color: #222;
+        white-space: nowrap;
+    }
+    .estimate_detail_contants .select_option_area .select_option_dropdown {
+        flex: 1 1 auto;
+        width: 18.19em;
+    }
+
+    .estimate_detail_contants .select_option_dropdown .select_dropdown {
+        position: relative;
+        margin-top: 0.63em;
+    }
+    .estimate_detail_contants .select_option_dropdown .select_dropdown:first-child {
+        margin-top: 0;
+    }
+
+    .estimate_detail_contants .select_dropdown .dropdown_toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 36px;
+        padding: 0 0.9em;
+        border-radius: 0.44em;
+        border: 1px solid #dbdee2;
+        background-color: #fff;
+        font-size: 0.88em;
+        text-align: left;
+        color: #6f7785;
+    }
+
+    .estimate_detail_contants .select_dropdown .dropdown_content {
+        display: none;
+        position: absolute;
+        top: 44px;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        border: 1px solid #aaa;
+        border-radius: 0 0 0.44em 0.44em;
+        background-color: #fff;
+    }
+
+    .estimate_detail_contants .select_dropdown .dropdown_toggle span {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .estimate_detail_contants .select_dropdown .dropdown_toggle::after {
+        content: "";
+        display: inline-block;
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        background: url("https://cdn.imweb.me/thumbnail/20240222/f5fe923317dbf.png") no-repeat 0 0 / 100% auto;
+    }
+    
+    .estimate_detail_contants .select_dropdown .dropdown_toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: 36px;
+        padding: 0 0.9em;
+        border-radius: 0.44em;
+        border: 1px solid #dbdee2;
+        background-color: #fff;
+        font-size: 0.88em;
+        text-align: left;
+        color: #6f7785;
+    }
+
+    .estimate_detail_contants .select_dropdown .dropdown_content li:last-child .dropdown_item {
+        border-radius: 0 0 0.44em 0.44em;
+    }
+    .estimate_detail_contants .select_dropdown .dropdown_content li:first-child .dropdown_item {
+        border-top: 0;
+    }
+    .estimate_detail_contants .select_dropdown .dropdown_content .dropdown_item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 0.63em;
+        border-top: 1px solid #eee;
+        font-size: 0.88em;
+        text-align: left;
+        word-break: break-word;
+    }
+
+
+
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<div class="estimateDetail_profile_infoWra">
+    <div class="estimateDetail_profile_textArea">
+        <h1 class="estimateDetail_profile_name">
+                 송년회 공연 (팝페라+아나운서)
+        </h1>
+        <div class="estimateDetail_profile_categoryBox">
+            <span class="estimateDetail_profile_categoryItem">전국</span>
+        </div>
+        <p class="estimateDetail_profile_count">
+            <span>23</span>명이 봤고, <span>5</span>명이 찜했어요.
+        </p>
+
+        <div class="price_box">
+            <span class="valid_price">3,500,000원</span>
+            <div class="add_price_info">
+                <span class="vat_info">*부가세 별도</span>
+            </div>
+        </div>
+                                                                 
+        <div class="select_option_wrap">
+            <div class="select_option_area">
+                <div class="select_option_label">추가 상품</div>
+                <div class="select_option_dropdown">
+                    <div class="select_dropdown page_option ext_prod_data">
+                        <button type="button" class="dropdown_toggle"><span>음향 시스템</span></button>
+                        <ul class="dropdown_content">
+                                <li>
+                                    <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                        <span class="prod_info_val">음향 시스템 및 감독  </span>
+                                        <span>(+2,500,000원)</span>
+                                    </button>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="select_dropdown page_option ext_prod_data">
+                        <button type="button" class="dropdown_toggle"><span>조명 시스템</span></button>
+                        <ul class="dropdown_content">
+                                <li>
+                                    <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                        <span class="prod_info_val">조명 시스템 및 감독  </span>
+                                        <span>(+3,000,000원)</span>
+                                    </button>
+                                </li>
+                        </ul>
+                    </div>
+                    <div class="select_dropdown page_option ext_prod_data">
+                        <button type="button" class="dropdown_toggle"><span>안내데스크</span></button>
+                        <ul class="dropdown_content">
+                                <li>
+                                    <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                        <span class="prod_info_val">테이블+제작물+배너2종  </span>
+                                        <span>(+400,000원)</span>
+                                    </button>
+                                </li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+            <ul class="select_option_list page_selected_options">
+
+            </ul>
+            <form action="/evnet/question/ready/53520" id="event_question_ready_form" method="POST" style="display: none;">
+                <input type="hidden" name="_token" value="O5CedTk1MW4H7kUDWuKbkEejLKNjB9FhecCjNGgN">                                <input type="text" name="artistidx" class="question_form_artistidx" style="display: none;">
+                <textarea type="text" name="product_info" class="form_product_info" style="display: none;"></textarea>
+            </form>
+        </div>                            
+        <!-- // v1.0.0 옵션 선택 -->
+        <div class="btn_box bottom_menu">
+            <div class="harf_box">
+                <a href="/event/question?id=53520" class="link_expert_purple event_question_btn" onclick="gtag('event', '예약 문의하기 버튼', {'event_category': 'directOffer', 'event_label': '버튼 클릭'});">
+                    예약 문의하기
+                </a>
+                                                                       
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+/* 변수 선언*/
+let priceType = 'fixed';
+let includeVatFlag = 'n';
+
+let genre =  '송년회,연말 행사';
+let cusFlag =  '전문가';
+
+let option_data = JSON.parse('[]');
+let selected_options = Array(option_data.length);
+
+let ext_prod_data = JSON.parse('[{"label":"\uc74c\ud5a5 \uc2dc\uc2a4\ud15c","extProd":[{"value":"\uc74c\ud5a5 \uc2dc\uc2a4\ud15c \ubc0f \uac10\ub3c5","price":"2500000","type":"quantity"}]},{"label":"\uc870\uba85 \uc2dc\uc2a4\ud15c","extProd":[{"value":"\uc870\uba85 \uc2dc\uc2a4\ud15c \ubc0f \uac10\ub3c5","price":"3000000","type":"quantity"}]},{"label":"\uc548\ub0b4\ub370\uc2a4\ud06c","extProd":[{"value":"\ud14c\uc774\ube14+\uc81c\uc791\ubb3c+\ubc30\ub1082\uc885","price":"400000","type":"quantity"}]},{"label":"\ubbf8\ub514\uc5b4 \uba85\ucc30 \ubc0f \uc785\uc7a5 \ud314\ucc0c","extProd":[{"value":"100\uc778 \uae30\uc900","price":"270000","type":"quantity"}]},{"label":"\ud3ec\ud1a0\uc874 \uc81c\uc791","extProd":[{"value":"\ud2b8\ub7ec\uc2a4 \ub610\ub294 \ud48d\uc120\uc544\uce58","price":"1000000","type":"quantity"}]},{"label":"\uc2dc\uc0c1 \ubcf4\ub4dc","extProd":[{"value":"1\uac1c (\ub514\uc790\uc778 \ubcc4\ub3c4)","price":"50000","type":"quantity"}]},{"label":"\ud589\uc0ac \uc2a4\ucf00\uce58","extProd":[{"value":"\uc0ac\uc9c4&\uc601\uc0c1 \ucd2c\uc601","price":"500000","type":"quantity"}]}]');
+
+let addWorkPrice = '0';
+// let selected_ext_prods = Array(ext_prod_data.length);
+
+let basicPrice = 0;
+let allPrice = 0;
+
+/* 함수 선언*/
+function imgSkeletonLoading(targetClass) {
+    $(targetClass).each(function () {
+        let imageBox = $(this);
+        if (imageBox.is(".loaded")) {
+            return;
+        }
+
+        let backgroundImageUrl = imageBox.data("bg-image");
+        imageBox.addClass("skeleton");
+
+        if (imageBox.is(".estimateDetail_profile_imgWra")) {
+            let imageDivs = imageBox.find(".swiper-slide");
+            let loadingCount = imageDivs.length;
+            $(imageDivs).each(function () {
+                let imageDiv = $(this);
+                backgroundImageUrl = $(imageDiv).data("bg-image");
+                $(imageDiv).css(
+                    "background-image",
+                    "url(" + backgroundImageUrl + ")"
+                );
+
+                // 이미지 로딩 완료 시 처리
+                let image = new Image();
+                image.src = backgroundImageUrl;
+                image.onload = function () {
+                    loadingCount--;
+                    if (loadingCount === 0) {
+                        imageBox.removeClass("skeleton");
+                        imageBox.addClass("loaded");
+                    }
+                };
+
+                image.onerror = function () {
+                    imageBox.removeClass("skeleton");
+                    imageBox.addClass("loaded");
+                };
+            });
+        } else if (
+            imageBox.is(".estimateDetail_movie_item") ||
+            imageBox.is(".video")
+        ) {
+            let iframe = $(this).find("iframe")[0];
+            $(iframe).on("load", function () {
+                imageBox.removeClass("skeleton");
+                imageBox.addClass("loaded");
+            });
+        } else {
+            if (imageBox.is(".img_wrapper")) {
+                let imageDiv = imageBox.find(".img")[0];
+                $(imageDiv).css(
+                    "background-image",
+                    "url(" + backgroundImageUrl + ")"
+                );
+            } else if (
+                imageBox.is(".main_plan_item") ||
+                imageBox.is(".liveMov")
+            ) {
+                let imgTag = imageBox.find("img")[0];
+                $(imgTag).attr("src", backgroundImageUrl);
+            } else {
+                // 배경 이미지 URL 설정
+                imageBox.css(
+                    "background-image",
+                    "url(" + backgroundImageUrl + ")"
+                );
+            }
+
+            if (backgroundImageUrl == "") {
+                imageBox.removeClass("skeleton");
+                imageBox.addClass("loaded");
+            }
+
+            // 이미지 로딩 완료 시 처리
+            let image = new Image();
+            image.src = backgroundImageUrl;
+
+            image.onload = function () {
+                imageBox.removeClass("skeleton");
+                imageBox.addClass("loaded");
+            };
+
+            image.onerror = function () {
+                imageBox.removeClass("skeleton");
+                imageBox.addClass("loaded");
+            };
+        }
+    });
+}
+
+$(window).resize(function () {
+    let emptySlideLength = $('.empty_slide').length;
+    let slideLength = $('.swiper-slide').length;
+
+    if($(window).width() < 1241) {
+        $('.estimateDetail_profile_imgWra').show();
+        if(emptySlideLength > 0) {
+            removeEmptySlide(emptySlideLength == 5 ? 4 : emptySlideLength);
+        }
+    }else {
+        if(slideLength <= 1) {
+            $('.estimateDetail_profile_imgWra').hide();
+        }
+        if(slideLength <= 5) {
+            addEmptySlide(slideLength == 0 ? 4 : 5-slideLength);
+        }
+    }
+
+    if ($(window).width() < 1241){
+        $('.event_question_btn').removeClass('btn_public_relations_disabled');
+        $('.buy_btn').removeClass('btn_public_relations_disabled');
+        $('.buy_btn').attr('href', "javascript:open_bottom_sheet('.popup_option_select');");
+        $('.buy_btn').removeAttr('onclick');
+    }else {
+        close_bottom_sheet('.popup_option_select');
+
+        if(option_data.length == 0 || $('.page_selected_options .select_option_item').length > 0) {
+            $('.event_question_btn').removeClass('btn_public_relations_disabled');
+            $('.buy_btn').removeClass('btn_public_relations_disabled');
+        }else {
+            $('.event_question_btn').addClass('btn_public_relations_disabled');
+            $('.buy_btn').addClass('btn_public_relations_disabled');
+        }
+
+        $('.buy_btn').attr('href', "/payment/ready?artist_id=53520&type=reserv");
+        $('.buy_btn').attr('onclick', "gtag('event', '예약하기 버튼', {'event_category': 'paymentOffer', 'event_label': '버튼 클릭'});");
+    }
+});
+
+$(".more_textInfo").click(function(){
+    var openId = $(this).attr("data-openId");
+    $("#" + openId).toggleClass("active");
+    $(this).toggleClass("active");
+});
+
+$('.btn_question').click(function() {
+    if ("") {
+        location.href = "/expert/question?id=53520&offer_id=";
+        return false;
+    } else {
+        $(".popup_login").fadeIn(300);
+        $(".contants_cover").fadeIn(300);
+        $("body").addClass("active");
+        $(".btn_m_menu").removeClass("active");
+        $(".side_menu").removeClass("active");
+        $(".body_cover").fadeOut(300);
+        return false;
+    }
+    return false;
+});
+
+
+function optionSelect(isPage, clickItem) {
+    let type = isPage ? "page" : "popup";
+
+    var parent = $(clickItem).closest(`.${type}_option`);
+
+    if($(clickItem).hasClass('ext_prod_info')) {            
+        var extProdIdx = $(`.${type}_option.ext_prod_data`).index(parent);
+        var extProdValIdx = parent.find(`.${type}_option_item`).index(clickItem);
+        var selectExtProdData = (ext_prod_data[extProdIdx].extProd[extProdValIdx]);
+        var selectExtProdVal = selectExtProdData.value;
+
+        $(parent).children('.dropdown_toggle').children('span').text(ext_prod_data[extProdIdx].label);   
+        let dupCnt = $(".prod_info_val").filter(function() { 
+            return $(this).text().trim() === selectExtProdVal
+        }).length;
+
+        if(dupCnt > 1) {
+            selectExtProdVal = selectExtProdData.value + ` (${ext_prod_data[extProdIdx].label})` 
+        }
+
+        var isDuplicateExtProd = false;
+
+        $(`.select_option_info span`).each(function() {
+            if($(this).text() === selectExtProdVal) {
+                alert('이미 추가된 상품입니다.')
+                isDuplicateExtProd = true;
+                return false; 
+            }
+        })
+
+        if(!isDuplicateExtProd){
+            allPrice += parseInt(selectExtProdData.price);
+            add_select_option_item(selectExtProdVal, parseInt(selectExtProdData.price), isPage, selectExtProdData.type, true);
+        }
+        
+    }else {
+        parent.addClass('option_selected');
+        var optionIdx = $(`.${type}_option.option_data`).index(parent);
+        var optionValIdx = parent.find(`.${type}_option_item`).index(clickItem);
+
+        // selected_options에 값이 있을 경우엔 값 수정, 없을 경우 값 추가
+        selected_options[optionIdx] = (option_data[optionIdx].option[optionValIdx]);
+        
+        if($(`.${type}_option.option_data`).length == $('.option_selected').length) {
+            var selectedValueStr = selected_options.map(v => v.value).join(" / ");
+
+
+            var isDuplicateOption = false;
+
+            $(`.select_option_info span`).each(function() {
+                if($(this).text() === selectedValueStr) {
+                    alert('이미 추가된 옵션입니다.')
+                    isDuplicateOption = true;
+                    return false; 
+                }
+            })
+
+            if(!isDuplicateOption) {
+                let optionType = 'quantity';
+                var optionPrice = selected_options.map(v => parseInt(v.price)).reduce((acc, curr) => acc + curr,  priceType != 'fixed' ? 0 : basicPrice);
+                allPrice += optionPrice;
+                add_select_option_item(selectedValueStr, optionPrice, isPage, optionType);
+            }
+            
+            
+            $(`.${type}_option.option_data`).removeClass('option_selected');
+            selected_options = Array($(`.${type}_option.option_data`).length);
+
+            $(`.${type}_option.option_data`).each(function() {
+                $(this).children('.dropdown_toggle').children('span').text(option_data[$(`.${type}_option`).index(this)].label);
+            });
+        }
+    }        
+}
+
+$('.page_selected_options, .popup_selected_options').on('DOMSubtreeModified', function() { 
+    if($(window).width() > 1240) {
+        if($(this).find('li:not(.select_ext_prod)').length > 0 || option_data.length == 0) {
+            $('.event_question_btn').removeClass('btn_public_relations_disabled');
+            $('.buy_btn').removeClass('btn_public_relations_disabled');
+        }else {
+            $('.event_question_btn').addClass('btn_public_relations_disabled');
+            $('.buy_btn').addClass('btn_public_relations_disabled');
+        } 
+    }else {
+        $('.btn_footer').prop('disabled', !($(this).find('li:not(.select_ext_prod)').length > 0 || option_data.length == 0));
+    }
+});
+
+$('.page_selected_options, .popup_selected_options').on('click','.btn_close',function() {
+    let idx = $(this).closest('.select_option_item').index();
+    let pageCloseOption = $('.page_selected_options .select_option_item').eq(idx);
+    let popupCloseOption =  $('.popup_selected_options .select_option_item').eq(idx);
+
+    pageCloseOption.remove();
+    popupCloseOption.remove();
+
+    let price = pageCloseOption.find('.option_price span').text().replace(/,/g, "");
+    
+    if(price){
+        allPrice -= price;
+        set_total_price();
+    }      
+})
+
+
+$('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .btn_plus',function() {
+    let idx = $(this).closest('.select_option_item').index();
+    let pageQuantityOption = $('.page_selected_options .select_option_item').eq(idx);
+    let popupQuantityOption =  $('.popup_selected_options .select_option_item').eq(idx);
+
+    let quantityValue = $(this).siblings('.quantity').text();
+    let optionPriceValue = $(this).parent().siblings('.option_price').children('span').text();
+    let calcFlag = $(this).hasClass('btn_plus') ? 1 : -1;
+
+    if($(this).hasClass('btn_minus') && quantityValue == 1) {
+        return;
+    }
+    
+    let calcQuantity = parseInt(quantityValue) + (calcFlag);
+    
+    if(optionPriceValue.length > 0) {
+        const optionBasicPrice = parseInt(optionPriceValue.replace(/,/g, "")) / parseInt(quantityValue);
+        if(priceType == 'fixed') {
+            allPrice += optionBasicPrice * (calcFlag);
+            set_total_price();
+        }
+        
+        
+        let priceStr = (optionBasicPrice * calcQuantity).toLocaleString();
+        pageQuantityOption.find('.option_price span').text(priceStr);
+        popupQuantityOption.find('.option_price span').text(priceStr);
+    }
+
+
+    pageQuantityOption.find('.quantity').text(calcQuantity);
+    popupQuantityOption.find('.quantity').text(calcQuantity);        
+});
+
+function add_select_option_item(value, price, isPage, optionType, isExtProd = false) {
+    console.log('add_select_option_item');
+}
+
+
+
+
+function set_total_price() {
+    let totalPrice = 0;
+    if(priceType == 'fixed') {
+        if(allPrice > 0) {
+            totalPrice = allPrice + parseInt(addWorkPrice);
+        }
+                    
+        $('.btn_footer_price').text(totalPrice.toLocaleString());
+        $('.total_price strong').text(totalPrice.toLocaleString());  
+    }
+}
+
+$('.buy_btn, .event_question_btn').on('click',function() {
+    if($(window).width() < 1241 && option_data.length > 0){
+        $('.btn_footer_price').text($('.total_price strong').text());
+        $('.btn_footer').prop('disabled', $('.popup_selected_options .select_option_item').length === 0);  
+    }
+})
+
+$('.buy_btn').click(function() {
+    if($(this).hasClass('btn_public_relations_disabled')) {
+        return false;
+    }
+    if($(window).width() < 1241 && (option_data.length > 0 || ext_prod_data.length > 0)){
+        $('.btn_footer').removeClass('event-question');
+        $('.btn_footer').addClass('payment');
+        $('.btn_footer_price').show();
+        $('.btn_footer_text').text('원 구매하기');
+        return;   
+    }else {
+        $(this).attr("href", 'javascript:;')
+        let optionLI =  $('.page_selected_options .select_option_item');
+        let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
+
+        let histOptionsStr = selectedOptionList.map((item) => {
+            return `${item.label}(${item.price})(${item.count})`;
+        }).join('\n');
+
+        let msgOptionsInfoStr = selectedOptionList.map((item) => {
+            return `${item.label}(${item.count})`;
+        }).join(', ');
+
+        let histExtProdsInfoStr = selectedExtProdList.map((item) => {
+            return `${item.label}(${item.price})(${item.count})`;
+        }).join('\n');
+        
+        let msgExtProdsInfoStr = selectedExtProdList.map((item) => {
+            return `${item.label}(${item.count})`;
+        }).join(', ');
+
+        
+        let totalPrice = allPrice + parseInt(addWorkPrice);       
+
+        $('.payment_form_artistidx').val('53520');
+        $('.form_total_price').val(totalPrice);
+        $('.form_hist_selected_options_info').val(histOptionsStr);
+        $('.form_msg_selected_options_info').val(msgOptionsInfoStr);
+        $('.form_hist_selected_ext_prods_info').val(histExtProdsInfoStr);
+        $('.form_msg_selected_ext_prods_info').val(msgExtProdsInfoStr);
+
+        $('#payment_ready_form').submit();
+    }  
+
+})
+
+$('.event_question_btn').click(function() {
+    if($(this).hasClass('btn_public_relations_disabled')) {
+        return false;
+    }
+    if($(window).width() < 1241 && $('.popup_option').length > 0){
+        $(this).attr('href', "javascript:open_bottom_sheet('.popup_option_select');");
+        $('.btn_footer').addClass('event-question');
+        $('.btn_footer').removeClass('payment');
+        $('.btn_footer_price').hide();
+        $('.btn_footer_text').text('예약 문의하기');
+    }else if(cusFlag == '강연자') {
+        $(this).attr('href', "/event/lecture/question?id=53520");
+    }else {
+        $(this).attr("href", 'javascript:;')
+        
+        $('.question_form_artistidx').val('53520');
+        setSuppliesData('page_btn');
+        
+        
+        $('#event_question_ready_form').submit();
+    }
+})
+
+
+$('.btn_footer').click(function() {
+    if($(this).hasClass('payment')) {
+        let optionLI =  $('.popup_selected_options .select_option_item');
+        let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
+
+        let totalPrice = allPrice > 0 ? allPrice + parseInt(addWorkPrice) : 0;
+
+        let histOptionsStr = selectedOptionList.map((item) => {
+            return `${item.label}(${item.price})(${item.count})`;
+        }).join('\n');
+
+        let msgOptionsInfoStr = selectedOptionList.map((item) => {
+            return `${item.label}(${item.count})`;
+        }).join(', ');
+
+        let histExtProdsInfoStr = selectedExtProdList.map((item) => {
+            return `${item.label}(${item.price})(${item.count})`;
+        }).join('\n');
+        
+        let msgExtProdsInfoStr = selectedExtProdList.map((item) => {
+            return `${item.label}(${item.count})`;
+        }).join(', ');
+
+
+        $('.payment_form_artistidx').val('53520');
+        $('.form_total_price').val(totalPrice);
+        $('.form_hist_selected_options_info').val(histOptionsStr);
+        $('.form_msg_selected_options_info').val(msgOptionsInfoStr);
+        $('.form_hist_selected_ext_prods_info').val(histExtProdsInfoStr);
+        $('.form_msg_selected_ext_prods_info').val(msgExtProdsInfoStr);
+        
+
+        $('#payment_ready_form').submit();
+    } else if(cusFlag == '강연자') {
+        $(this).attr('href', "/event/lecture/question?id=53520");
+    } else {
+        $(this).attr("href", 'javascript:;')
+        
+        $('.question_form_artistidx').val('53520');
+       // setSuppliesData('page_btn');
+        
+        $('#event_question_ready_form').submit();
+    }
+})
+
+function setOptionList(optionLI) {
+
+    let selectedOptionList = [];
+    let selectedExtProdList = [];
+
+    
+    optionLI.each(function() {
+        var optionName = $(this).find('.select_option_info span').text();
+        var quantity = $(this).find('.quantity').text() || '1';
+        var price = $(this).find('.option_price span').text() || '0';
+    
+        var calcPrice = parseInt(price.replace(/[^\d]/g, '')) / parseInt(quantity)
+        var optionObj = { 
+            label: optionName,
+            count: quantity,
+            price: 0,
+        }
+
+        if($(this).hasClass('select_ext_prod')) {
+            optionObj.price = calcPrice;
+            selectedExtProdList.push(optionObj);
+        }else {
+            optionObj.price = priceType === 'fixed' ? calcPrice - basicPrice : calcPrice
+            selectedOptionList.push(optionObj);  
+        }
+    })
+
+    return { selectedOptionList, selectedExtProdList };
+}
+
+function setSuppliesData(btn_type) {
+    let optionLI = btn_type === 'page_btn' ? $('.page_selected_options .select_option_item') :  $('.popup_selected_options .select_option_item');
+    let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
+
+    let isBuyBtn = 'n';
+    
+    let totalPrice = priceType === 'fixed' ? ((allPrice + parseInt(addWorkPrice)).toLocaleString()) : '';
+
+    let categoryType = 'show'
+    let largeCategory = categoryType == 'supplies' ? "행사용품" : categoryType == 'show' ? "행사패키지" : cusFlag == '강연자' ? "강연자" : "프로필";
+    let categoryName =  '행사패키지';
+    
+
+    let suppliesData = {
+        priceType: priceType,
+        itemType: largeCategory,
+        categoryName: categoryName,
+        genre: genre,
+        options: selectedOptionList,
+        extProds: selectedExtProdList,
+        totalPrice: totalPrice
+    }
+
+    $('.form_product_info').val(JSON.stringify(suppliesData));
+}
+
+function open_bottom_sheet(target){
+    $(target).addClass('is_show');
+    $(".contants_cover").fadeIn(300);
+    $("body").addClass("active");
+}
+function close_bottom_sheet(target){
+    $(target).removeClass('is_show');
+    $(".contants_cover").fadeOut(300);
+    $("body").removeClass("active");
+}
+
+// 상세페이지 상단 이미지 영역
+$(document).on('click','.estimateDetail_profile_swiper .swiper-slide',function(){
+    if($(this).hasClass('empty_slide')) {
+        return;
+    }
+    let bckImg = $(this).css('background-image');
+
+    $(this).addClass('active').siblings().removeClass('active');
+    $('.estimateDetail_profile_imgArea').css({
+        backgroundImage:bckImg
+    })
+})
+
+// 상세페이지 정보 영역 리스트
+$(document).on('click','.estimateDetail_list_more_btn',function(){
+    $(this).siblings('[class^="estimateDetail_contentBox_list"]').toggleClass("full");
+});
+
+
+$(document).ready(function () {
+
+    if($('.basic_info').find('.estimateDetail_contentBox').length == 0) {
+        if($('.basic_info').find('.career_badge').length == 0) {
+            $('.basic_info').hide();
+        }else {
+            $('.basic_info .estimateDetail_titleBox').css("margin", 0);    
+        }
+    };
+
+    $('.estimateDetail_table').each(function(){
+      var rows = $(this).find('.estimateDetail_tr');
+      if((rows.length % 2) == 1){
+        $(this).addClass('estimateDetail_table_odd');
+      }else{
+        $(this).addClass('estimateDetail_table_even');
+      }
+    });
+
+    basicPrice = parseInt($('.valid_price').text().replace(/[^\d]/g, ''));
+
+   try{
+        var params = (new URL(document.location)).searchParams;
+        if(params.get('main_menu_artist_uid')){
+            var newUrl = updateURLParameter(window.location.href, 'main_menu_artist_uid', '');
+            history.pushState(null, null, newUrl);
+        }
+    }catch(e){}
+
+
+    if($(window).width() < 1241) {
+        removeEmptySlide($('.empty_slide').length);
+    }
+    
+    $('.dropdown_toggle').click(function () {
+        console.log('dropdown_toggle!!!');
+
+        var parent = $(this).closest('.select_dropdown');
+        if (parent.hasClass('is_active')){
+            parent.removeClass('is_active');
+        }else {
+            $('.select_dropdown').removeClass('is_active');
+            parent.addClass('is_active');
+        }
+    });
+
+    $('.dropdown_item').click(function () {
+        var parent = $(this).closest('.select_dropdown');
+        parent.removeClass('is_active');
+        parent.children('.dropdown_toggle').children('span').text($(this).text());
+
+        if($(this).hasClass('page_option_item')) {
+            optionSelect(true, this)
+        }else {
+            optionSelect(false, this)
+        };
+    });
+
+    // 옵션은 없지만 추가상품이 있는 경우와 둘 다 없는 경우 총 상품 금액에 상품 금액 설정
+    if((ext_prod_data.length > 0 && option_data.length == 0) || (ext_prod_data.length == 0 && option_data.length == 0)) {
+        allPrice = basicPrice;
+        set_total_price();
+    }
+
+    // 상세페이지 정보 영역 리스트 높이
+    let estimateDetailContentBoxSingleListItemHei = $('.estimateDetail_contentBox_list_single li').outerHeight(true);
+    let estimateDetailContentBoxDoubleListItemHei = $('.estimateDetail_contentBox_list_double li').outerHeight(true);
+
+    $('.estimateDetail_contentBox_list_single').each(function(){
+        let estimateDetailContentBoxListItemLeng = $(this).find('li').length;
+        
+        if (estimateDetailContentBoxListItemLeng < 6) {
+            $(this).css({
+                height: 'auto',
+            })
+            $(this).siblings('.estimateDetail_list_more_btn').hide();
+        } else {
+            $(this).css({
+                height: estimateDetailContentBoxSingleListItemHei * 5 + 'px',
+            })
+        }
+    })
+
+    $('.estimateDetail_contentBox_list_double').each(function(){
+        let estimateDetailContentBoxListItemLeng = $(this).find('li').length;
+        
+        if (estimateDetailContentBoxListItemLeng < 11) {
+            $(this).css({
+                height: 'auto',
+            })
+            $(this).siblings('.estimateDetail_list_more_btn').hide();
+        } else {
+            $(this).css({
+                height: estimateDetailContentBoxDoubleListItemHei * 5 + 'px',
+            })
+        }
+    })
+
+    // 상세페이지 상단 이미지 영역
+    let profileSwiperFisrt = $('.estimateDetail_profile_swiper .swiper-slide').first();
+    let profileSwiperFisrtBgUrl = profileSwiperFisrt.attr('data-bg-image');  
+    
+    if(profileSwiperFisrtBgUrl) {
+        if($('.swiper-slide:not(.empty_slide)').length == 1 && $(window).width() > 1240) {
+            $('.estimateDetail_profile_imgWra').hide();
+        }  
+
+        profileSwiperFisrt.addClass('active');
+        $('.estimateDetail_profile_imgArea').attr('data-bg-image',profileSwiperFisrtBgUrl);
+    }else {
+        if($(window).width() > 1240) {
+            $('.estimateDetail_profile_imgWra').hide();
+        }
+        $('.estimateDetail_profile_imgArea').css({
+            backgroundColor:'#ededed'
+        });
+    }
+    
+
+    imgSkeletonLoading('.swiper-slide, .estimateDetail_movie_item, .liveMov, .estimateDetail_profile_imgArea');    
+
+
+
+});
+
+
+
+
+</script>
