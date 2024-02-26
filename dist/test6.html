@@ -1,223 +1,84 @@
-<style>
-    * {
-        box-sizing: border-box;
-    }
-    div {
-        display: block;
-    }
-    li {
-        list-style: none;
-    }
-    button {
-        background: transparent;
-        border: 0;
-        cursor: pointer;
-        outline: 0;
-    }
 
-    .estimateDetail_profile_infoWra {
-        position: relative;
-        right: 0;
-        margin-top: 20px;
-        width: 100%;
-        max-width: 790px;
-    }
+<link rel="stylesheet" href="./test6Style.css">
 
-    .estimateDetail_profile_textArea {
-        position: relative;
-        min-height: 20.5em;
-        background: #fff;
-        border-radius: 7px;
-        padding: 28px 28px 79.5px;
-    }
-    
-    .estimate_detail_contants .select_option_area {
-        display: flex;
-        align-items: flex-start;
-        width: 100%;
-        margin: 1.88em 0 1.25em;
-    }
-    .estimate_detail_contants .select_option_area .select_option_label {
-        flex-shrink: 0;
-        width: 20%;
-        margin-top: 0.94em;
-        margin-right: 0.63em;
-        font-weight: bold;
-        color: #222;
-        white-space: nowrap;
-    }
-    .estimate_detail_contants .select_option_area .select_option_dropdown {
-        flex: 1 1 auto;
-        width: 18.19em;
-    }
-
-    .estimate_detail_contants .select_option_dropdown .select_dropdown {
-        position: relative;
-        margin-top: 0.63em;
-    }
-    .estimate_detail_contants .select_option_dropdown .select_dropdown:first-child {
-        margin-top: 0;
-    }
-
-    .estimate_detail_contants .select_dropdown .dropdown_toggle {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: 36px;
-        padding: 0 0.9em;
-        border-radius: 0.44em;
-        border: 1px solid #dbdee2;
-        background-color: #fff;
-        font-size: 0.88em;
-        text-align: left;
-        color: #6f7785;
-    }
-
-    .estimate_detail_contants .select_dropdown .dropdown_content {
-        display: none;
-        position: absolute;
-        top: 44px;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        border: 1px solid #aaa;
-        border-radius: 0 0 0.44em 0.44em;
-        background-color: #fff;
-    }
-
-    .estimate_detail_contants .select_dropdown .dropdown_toggle span {
-        display: block;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-    }
-
-    .estimate_detail_contants .select_dropdown .dropdown_toggle::after {
-        content: "";
-        display: inline-block;
-        flex-shrink: 0;
-        width: 20px;
-        height: 20px;
-        background: url("https://cdn.imweb.me/thumbnail/20240222/f5fe923317dbf.png") no-repeat 0 0 / 100% auto;
-    }
-    
-    .estimate_detail_contants .select_dropdown .dropdown_toggle {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        height: 36px;
-        padding: 0 0.9em;
-        border-radius: 0.44em;
-        border: 1px solid #dbdee2;
-        background-color: #fff;
-        font-size: 0.88em;
-        text-align: left;
-        color: #6f7785;
-    }
-
-    .estimate_detail_contants .select_dropdown .dropdown_content li:last-child .dropdown_item {
-        border-radius: 0 0 0.44em 0.44em;
-    }
-    .estimate_detail_contants .select_dropdown .dropdown_content li:first-child .dropdown_item {
-        border-top: 0;
-    }
-    .estimate_detail_contants .select_dropdown .dropdown_content .dropdown_item {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        padding: 0.63em;
-        border-top: 1px solid #eee;
-        font-size: 0.88em;
-        text-align: left;
-        word-break: break-word;
-    }
-
-
-
-</style>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
-<div class="estimateDetail_profile_infoWra">
-    <div class="estimateDetail_profile_textArea">
-        <h1 class="estimateDetail_profile_name">
-                 송년회 공연 (팝페라+아나운서)
-        </h1>
-        <div class="estimateDetail_profile_categoryBox">
-            <span class="estimateDetail_profile_categoryItem">전국</span>
-        </div>
-        <p class="estimateDetail_profile_count">
-            <span>23</span>명이 봤고, <span>5</span>명이 찜했어요.
-        </p>
-
-        <div class="price_box">
-            <span class="valid_price">3,500,000원</span>
-            <div class="add_price_info">
-                <span class="vat_info">*부가세 별도</span>
+<div class="estimate_detail_contants">
+    <div class="estimateDetail_profile_infoWra">
+        <div class="estimateDetail_profile_textArea">
+            <h1 class="estimateDetail_profile_name">
+                    제목
+            </h1>
+            <div class="estimateDetail_profile_categoryBox">
+                <span class="estimateDetail_profile_categoryItem">카테고리</span>
             </div>
-        </div>
-                                                                 
-        <div class="select_option_wrap">
-            <div class="select_option_area">
-                <div class="select_option_label">추가 상품</div>
-                <div class="select_option_dropdown">
-                    <div class="select_dropdown page_option ext_prod_data">
-                        <button type="button" class="dropdown_toggle"><span>음향 시스템</span></button>
-                        <ul class="dropdown_content">
-                                <li>
-                                    <button type="button" class="dropdown_item page_option_item ext_prod_info">
-                                        <span class="prod_info_val">음향 시스템 및 감독  </span>
-                                        <span>(+2,500,000원)</span>
-                                    </button>
-                                </li>
-                        </ul>
-                    </div>
-                    <div class="select_dropdown page_option ext_prod_data">
-                        <button type="button" class="dropdown_toggle"><span>조명 시스템</span></button>
-                        <ul class="dropdown_content">
-                                <li>
-                                    <button type="button" class="dropdown_item page_option_item ext_prod_info">
-                                        <span class="prod_info_val">조명 시스템 및 감독  </span>
-                                        <span>(+3,000,000원)</span>
-                                    </button>
-                                </li>
-                        </ul>
-                    </div>
-                    <div class="select_dropdown page_option ext_prod_data">
-                        <button type="button" class="dropdown_toggle"><span>안내데스크</span></button>
-                        <ul class="dropdown_content">
-                                <li>
-                                    <button type="button" class="dropdown_item page_option_item ext_prod_info">
-                                        <span class="prod_info_val">테이블+제작물+배너2종  </span>
-                                        <span>(+400,000원)</span>
-                                    </button>
-                                </li>
-                        </ul>
-                    </div>
-                </div> 
-            </div>
-            <ul class="select_option_list page_selected_options">
+            <p class="estimateDetail_profile_count">
+                <span>강조</span> 광고
+            </p>
 
-            </ul>
-            <form action="/evnet/question/ready/53520" id="event_question_ready_form" method="POST" style="display: none;">
-                <input type="hidden" name="_token" value="O5CedTk1MW4H7kUDWuKbkEejLKNjB9FhecCjNGgN">                                <input type="text" name="artistidx" class="question_form_artistidx" style="display: none;">
-                <textarea type="text" name="product_info" class="form_product_info" style="display: none;"></textarea>
-            </form>
-        </div>                            
-        <!-- // v1.0.0 옵션 선택 -->
-        <div class="btn_box bottom_menu">
-            <div class="harf_box">
-                <a href="/event/question?id=53520" class="link_expert_purple event_question_btn" onclick="gtag('event', '예약 문의하기 버튼', {'event_category': 'directOffer', 'event_label': '버튼 클릭'});">
-                    예약 문의하기
-                </a>
-                                                                       
+            <div class="price_box">
+                <span class="valid_price">2,000,000원</span>
+                <div class="add_price_info">
+                    <span class="vat_info">*부가세 별도</span>
+                </div>
+            </div>
+                                                                    
+            <div class="select_option_wrap">
+                <div class="select_option_area">
+                    <div class="select_option_label">추가 상품</div>
+                    <div class="select_option_dropdown">
+                        <div class="select_dropdown page_option ext_prod_data">
+                            <button type="button" class="dropdown_toggle"><span>음향 시스템</span></button>
+                            <ul class="dropdown_content">
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">음향 시스템 및 감독  </span>
+                                            <span>(+2,500,000원)</span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="select_dropdown page_option ext_prod_data">
+                            <button type="button" class="dropdown_toggle"><span>조명 시스템</span></button>
+                            <ul class="dropdown_content">
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">조명 시스템 및 감독  </span>
+                                            <span>(+3,000,000원)</span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="select_dropdown page_option ext_prod_data">
+                            <button type="button" class="dropdown_toggle"><span>안내데스크</span></button>
+                            <ul class="dropdown_content">
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">테이블+제작물+배너2종  </span>
+                                            <span>(+400,000원)</span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+                <ul class="select_option_list page_selected_options">
+
+                </ul>
+            </div>                            
+            <!-- // v1.0.0 옵션 선택 -->
+            <div class="btn_box bottom_menu">
+                <div class="harf_box">
+                    <a href="/event/question?id=53520" class="link_expert_purple event_question_btn" onclick="gtag('event', '예약 문의하기 버튼', {'event_category': 'directOffer', 'event_label': '버튼 클릭'});">
+                        예약 문의하기
+                    </a>
+                                                                        
+                </div>
             </div>
         </div>
     </div>
+
 </div>
-
-
 
 <script>
 /* 변수 선언*/
@@ -328,66 +189,25 @@ function imgSkeletonLoading(targetClass) {
     });
 }
 
-$(window).resize(function () {
-    let emptySlideLength = $('.empty_slide').length;
-    let slideLength = $('.swiper-slide').length;
 
-    if($(window).width() < 1241) {
-        $('.estimateDetail_profile_imgWra').show();
-        if(emptySlideLength > 0) {
-            removeEmptySlide(emptySlideLength == 5 ? 4 : emptySlideLength);
+var mySwiper = null;
+function removeEmptySlide(cnt) {
+    /*
+    for(let i=0; i < cnt; i++) {
+        if(i == 4) {
+            break;
         }
-    }else {
-        if(slideLength <= 1) {
-            $('.estimateDetail_profile_imgWra').hide();
-        }
-        if(slideLength <= 5) {
-            addEmptySlide(slideLength == 0 ? 4 : 5-slideLength);
-        }
+        mySwiper.removeSlide(4-i);
     }
+    mySwiper.update();*/
+}
 
-    if ($(window).width() < 1241){
-        $('.event_question_btn').removeClass('btn_public_relations_disabled');
-        $('.buy_btn').removeClass('btn_public_relations_disabled');
-        $('.buy_btn').attr('href', "javascript:open_bottom_sheet('.popup_option_select');");
-        $('.buy_btn').removeAttr('onclick');
-    }else {
-        close_bottom_sheet('.popup_option_select');
-
-        if(option_data.length == 0 || $('.page_selected_options .select_option_item').length > 0) {
-            $('.event_question_btn').removeClass('btn_public_relations_disabled');
-            $('.buy_btn').removeClass('btn_public_relations_disabled');
-        }else {
-            $('.event_question_btn').addClass('btn_public_relations_disabled');
-            $('.buy_btn').addClass('btn_public_relations_disabled');
-        }
-
-        $('.buy_btn').attr('href', "/payment/ready?artist_id=53520&type=reserv");
-        $('.buy_btn').attr('onclick', "gtag('event', '예약하기 버튼', {'event_category': 'paymentOffer', 'event_label': '버튼 클릭'});");
+function addEmptySlide(cnt) {/*
+    for(let i=0; i < cnt; i++) {
+        mySwiper.appendSlide('<div class="swiper-slide empty_slide"></div>');   
     }
-});
-
-$(".more_textInfo").click(function(){
-    var openId = $(this).attr("data-openId");
-    $("#" + openId).toggleClass("active");
-    $(this).toggleClass("active");
-});
-
-$('.btn_question').click(function() {
-    if ("") {
-        location.href = "/expert/question?id=53520&offer_id=";
-        return false;
-    } else {
-        $(".popup_login").fadeIn(300);
-        $(".contants_cover").fadeIn(300);
-        $("body").addClass("active");
-        $(".btn_m_menu").removeClass("active");
-        $(".side_menu").removeClass("active");
-        $(".body_cover").fadeOut(300);
-        return false;
-    }
-    return false;
-});
+    mySwiper.update();*/
+}
 
 
 function optionSelect(isPage, clickItem) {
@@ -531,10 +351,11 @@ $('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .bt
 
 function add_select_option_item(value, price, isPage, optionType, isExtProd = false) {
     console.log('add_select_option_item');
+
+    let type = isPage ? "page" : "popup";
+    let quantity = 1;
+
 }
-
-
-
 
 function set_total_price() {
     let totalPrice = 0;
@@ -542,133 +363,9 @@ function set_total_price() {
         if(allPrice > 0) {
             totalPrice = allPrice + parseInt(addWorkPrice);
         }
-                    
-        $('.btn_footer_price').text(totalPrice.toLocaleString());
         $('.total_price strong').text(totalPrice.toLocaleString());  
     }
 }
-
-$('.buy_btn, .event_question_btn').on('click',function() {
-    if($(window).width() < 1241 && option_data.length > 0){
-        $('.btn_footer_price').text($('.total_price strong').text());
-        $('.btn_footer').prop('disabled', $('.popup_selected_options .select_option_item').length === 0);  
-    }
-})
-
-$('.buy_btn').click(function() {
-    if($(this).hasClass('btn_public_relations_disabled')) {
-        return false;
-    }
-    if($(window).width() < 1241 && (option_data.length > 0 || ext_prod_data.length > 0)){
-        $('.btn_footer').removeClass('event-question');
-        $('.btn_footer').addClass('payment');
-        $('.btn_footer_price').show();
-        $('.btn_footer_text').text('원 구매하기');
-        return;   
-    }else {
-        $(this).attr("href", 'javascript:;')
-        let optionLI =  $('.page_selected_options .select_option_item');
-        let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
-
-        let histOptionsStr = selectedOptionList.map((item) => {
-            return `${item.label}(${item.price})(${item.count})`;
-        }).join('\n');
-
-        let msgOptionsInfoStr = selectedOptionList.map((item) => {
-            return `${item.label}(${item.count})`;
-        }).join(', ');
-
-        let histExtProdsInfoStr = selectedExtProdList.map((item) => {
-            return `${item.label}(${item.price})(${item.count})`;
-        }).join('\n');
-        
-        let msgExtProdsInfoStr = selectedExtProdList.map((item) => {
-            return `${item.label}(${item.count})`;
-        }).join(', ');
-
-        
-        let totalPrice = allPrice + parseInt(addWorkPrice);       
-
-        $('.payment_form_artistidx').val('53520');
-        $('.form_total_price').val(totalPrice);
-        $('.form_hist_selected_options_info').val(histOptionsStr);
-        $('.form_msg_selected_options_info').val(msgOptionsInfoStr);
-        $('.form_hist_selected_ext_prods_info').val(histExtProdsInfoStr);
-        $('.form_msg_selected_ext_prods_info').val(msgExtProdsInfoStr);
-
-        $('#payment_ready_form').submit();
-    }  
-
-})
-
-$('.event_question_btn').click(function() {
-    if($(this).hasClass('btn_public_relations_disabled')) {
-        return false;
-    }
-    if($(window).width() < 1241 && $('.popup_option').length > 0){
-        $(this).attr('href', "javascript:open_bottom_sheet('.popup_option_select');");
-        $('.btn_footer').addClass('event-question');
-        $('.btn_footer').removeClass('payment');
-        $('.btn_footer_price').hide();
-        $('.btn_footer_text').text('예약 문의하기');
-    }else if(cusFlag == '강연자') {
-        $(this).attr('href', "/event/lecture/question?id=53520");
-    }else {
-        $(this).attr("href", 'javascript:;')
-        
-        $('.question_form_artistidx').val('53520');
-        setSuppliesData('page_btn');
-        
-        
-        $('#event_question_ready_form').submit();
-    }
-})
-
-
-$('.btn_footer').click(function() {
-    if($(this).hasClass('payment')) {
-        let optionLI =  $('.popup_selected_options .select_option_item');
-        let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
-
-        let totalPrice = allPrice > 0 ? allPrice + parseInt(addWorkPrice) : 0;
-
-        let histOptionsStr = selectedOptionList.map((item) => {
-            return `${item.label}(${item.price})(${item.count})`;
-        }).join('\n');
-
-        let msgOptionsInfoStr = selectedOptionList.map((item) => {
-            return `${item.label}(${item.count})`;
-        }).join(', ');
-
-        let histExtProdsInfoStr = selectedExtProdList.map((item) => {
-            return `${item.label}(${item.price})(${item.count})`;
-        }).join('\n');
-        
-        let msgExtProdsInfoStr = selectedExtProdList.map((item) => {
-            return `${item.label}(${item.count})`;
-        }).join(', ');
-
-
-        $('.payment_form_artistidx').val('53520');
-        $('.form_total_price').val(totalPrice);
-        $('.form_hist_selected_options_info').val(histOptionsStr);
-        $('.form_msg_selected_options_info').val(msgOptionsInfoStr);
-        $('.form_hist_selected_ext_prods_info').val(histExtProdsInfoStr);
-        $('.form_msg_selected_ext_prods_info').val(msgExtProdsInfoStr);
-        
-
-        $('#payment_ready_form').submit();
-    } else if(cusFlag == '강연자') {
-        $(this).attr('href', "/event/lecture/question?id=53520");
-    } else {
-        $(this).attr("href", 'javascript:;')
-        
-        $('.question_form_artistidx').val('53520');
-       // setSuppliesData('page_btn');
-        
-        $('#event_question_ready_form').submit();
-    }
-})
 
 function setOptionList(optionLI) {
 

@@ -1,0 +1,43 @@
+
+
+
+.rolling_list_wrap {
+    display: flex;
+    justify-content: end;
+    overflow: hidden;
+    position: relative;
+    width: 100px;
+    height: 17px;
+    margin-right: 12px;
+}
+
+.customers .rolling_list {
+    position: absolute;
+    height: auto;
+    top: 0;
+}
+
+.customers .rolling_list li {
+    height: 17px;
+    line-height: 17px;
+}
+
+.customers .customers_logo {
+    display: inline-block;
+    height: 100%;
+}
+
+.customers .customers_logo img {
+    display: block;
+    height: 100%;
+}
+
+.customers span {
+    color: #333;
+    font-size: 1.14rem;
+    font-weight: bold;
+}
+
+.customers span ~ span {
+    margin-left: 0.85rem;
+}
