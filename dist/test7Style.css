@@ -6,9 +6,8 @@
     justify-content: end;
     overflow: hidden;
     position: relative;
-    width: 100px;
-    height: 17px;
-    margin-right: 12px;
+    width: 150px;
+    height: 31px;
 }
 
 .customers .rolling_list {

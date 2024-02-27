@@ -69,10 +69,13 @@
             <!-- // v1.0.0 옵션 선택 -->
             <div class="btn_box bottom_menu">
                 <div class="harf_box">
-                    <a href="/event/question?id=53520" class="link_expert_purple event_question_btn" onclick="gtag('event', '예약 문의하기 버튼', {'event_category': 'directOffer', 'event_label': '버튼 클릭'});">
-                        예약 문의하기
-                    </a>
-                                                                        
+                    <!-- <a href="https://red-slippers.imweb.me/16" class="link_expert_purple event_question_btn" onclick="gtag('event', '견적 문의하기 버튼', {'event_category': 'directOffer', 'event_label': '버튼 클릭'});">
+                        견적 문의하기
+                    </a> -->
+
+                    <a href="test7.html" class="link_expert_purple event_question_btn" >
+                        견적 문의하기
+                    </a>                                               
                 </div>
             </div>
         </div>
@@ -85,22 +88,20 @@
 let priceType = 'fixed';
 let includeVatFlag = 'n';
 
-let genre =  '송년회,연말 행사';
-let cusFlag =  '전문가';
-
 let option_data = JSON.parse('[]');
 let selected_options = Array(option_data.length);
 
 let ext_prod_data = JSON.parse('[{"label":"\uc74c\ud5a5 \uc2dc\uc2a4\ud15c","extProd":[{"value":"\uc74c\ud5a5 \uc2dc\uc2a4\ud15c \ubc0f \uac10\ub3c5","price":"2500000","type":"quantity"}]},{"label":"\uc870\uba85 \uc2dc\uc2a4\ud15c","extProd":[{"value":"\uc870\uba85 \uc2dc\uc2a4\ud15c \ubc0f \uac10\ub3c5","price":"3000000","type":"quantity"}]},{"label":"\uc548\ub0b4\ub370\uc2a4\ud06c","extProd":[{"value":"\ud14c\uc774\ube14+\uc81c\uc791\ubb3c+\ubc30\ub1082\uc885","price":"400000","type":"quantity"}]},{"label":"\ubbf8\ub514\uc5b4 \uba85\ucc30 \ubc0f \uc785\uc7a5 \ud314\ucc0c","extProd":[{"value":"100\uc778 \uae30\uc900","price":"270000","type":"quantity"}]},{"label":"\ud3ec\ud1a0\uc874 \uc81c\uc791","extProd":[{"value":"\ud2b8\ub7ec\uc2a4 \ub610\ub294 \ud48d\uc120\uc544\uce58","price":"1000000","type":"quantity"}]},{"label":"\uc2dc\uc0c1 \ubcf4\ub4dc","extProd":[{"value":"1\uac1c (\ub514\uc790\uc778 \ubcc4\ub3c4)","price":"50000","type":"quantity"}]},{"label":"\ud589\uc0ac \uc2a4\ucf00\uce58","extProd":[{"value":"\uc0ac\uc9c4&\uc601\uc0c1 \ucd2c\uc601","price":"500000","type":"quantity"}]}]');
 
 let addWorkPrice = '0';
-// let selected_ext_prods = Array(ext_prod_data.length);
-
 let basicPrice = 0;
 let allPrice = 0;
 
 /* 함수 선언*/
 function imgSkeletonLoading(targetClass) {
+
+    console.log('imgSkeletonLoading');
+
     $(targetClass).each(function () {
         let imageBox = $(this);
         if (imageBox.is(".loaded")) {
@@ -189,28 +190,10 @@ function imgSkeletonLoading(targetClass) {
     });
 }
 
-
-var mySwiper = null;
-function removeEmptySlide(cnt) {
-    /*
-    for(let i=0; i < cnt; i++) {
-        if(i == 4) {
-            break;
-        }
-        mySwiper.removeSlide(4-i);
-    }
-    mySwiper.update();*/
-}
-
-function addEmptySlide(cnt) {/*
-    for(let i=0; i < cnt; i++) {
-        mySwiper.appendSlide('<div class="swiper-slide empty_slide"></div>');   
-    }
-    mySwiper.update();*/
-}
-
-
 function optionSelect(isPage, clickItem) {
+
+    console.log('optionSelect');
+
     let type = isPage ? "page" : "popup";
 
     var parent = $(clickItem).closest(`.${type}_option`);
@@ -285,21 +268,11 @@ function optionSelect(isPage, clickItem) {
     }        
 }
 
-$('.page_selected_options, .popup_selected_options').on('DOMSubtreeModified', function() { 
-    if($(window).width() > 1240) {
-        if($(this).find('li:not(.select_ext_prod)').length > 0 || option_data.length == 0) {
-            $('.event_question_btn').removeClass('btn_public_relations_disabled');
-            $('.buy_btn').removeClass('btn_public_relations_disabled');
-        }else {
-            $('.event_question_btn').addClass('btn_public_relations_disabled');
-            $('.buy_btn').addClass('btn_public_relations_disabled');
-        } 
-    }else {
-        $('.btn_footer').prop('disabled', !($(this).find('li:not(.select_ext_prod)').length > 0 || option_data.length == 0));
-    }
-});
 
+//닫기 버튼
 $('.page_selected_options, .popup_selected_options').on('click','.btn_close',function() {
+    console.log('btn_close');
+
     let idx = $(this).closest('.select_option_item').index();
     let pageCloseOption = $('.page_selected_options .select_option_item').eq(idx);
     let popupCloseOption =  $('.popup_selected_options .select_option_item').eq(idx);
@@ -315,8 +288,11 @@ $('.page_selected_options, .popup_selected_options').on('click','.btn_close',fun
     }      
 })
 
-
+//플러스 마이너스
 $('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .btn_plus',function() {
+
+    console.log('btn_minus btn_plus');
+
     let idx = $(this).closest('.select_option_item').index();
     let pageQuantityOption = $('.page_selected_options .select_option_item').eq(idx);
     let popupQuantityOption =  $('.popup_selected_options .select_option_item').eq(idx);
@@ -349,15 +325,48 @@ $('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .bt
     popupQuantityOption.find('.quantity').text(calcQuantity);        
 });
 
+
 function add_select_option_item(value, price, isPage, optionType, isExtProd = false) {
     console.log('add_select_option_item');
 
     let type = isPage ? "page" : "popup";
     let quantity = 1;
 
+    selectOptionLI = 
+    `<li class="select_option_item ${isExtProd ? 'select_ext_prod' : ''}">
+        <div class="select_option_info">
+            <span>${value}</span>
+            <button type="button" class="btn_close"> X </button>
+        </div>`;
+
+    if(optionType == 'quantity' || price > 0) {
+        selectOptionLI += `<div class="select_option_count">`;
+        if(optionType == 'quantity') {    
+            selectOptionLI += 
+                `<div class="count_area">
+                    <button type="button" class="btn_minus"> - </button>
+                    <span class='quantity'>1</span>
+                    <button type="button" class="btn_plus"> + </button>
+                </div>`;
+        }
+        
+        if(price > 0) {
+            selectOptionLI += `<div class="option_price">${priceType == 'variable' ? '+' : ''} <span>${price.toLocaleString()}</span>원</div>`;  
+        }
+        selectOptionLI += `</div>`
+    }
+    selectOptionLI += `</li>`
+
+    set_total_price();
+
+    $(`.page_selected_options`).append(selectOptionLI);
+    $(`.popup_selected_options`).append(selectOptionLI);
+
 }
 
 function set_total_price() {
+    console.log('set_total_price');
+
     let totalPrice = 0;
     if(priceType == 'fixed') {
         if(allPrice > 0) {
@@ -365,62 +374,6 @@ function set_total_price() {
         }
         $('.total_price strong').text(totalPrice.toLocaleString());  
     }
-}
-
-function setOptionList(optionLI) {
-
-    let selectedOptionList = [];
-    let selectedExtProdList = [];
-
-    
-    optionLI.each(function() {
-        var optionName = $(this).find('.select_option_info span').text();
-        var quantity = $(this).find('.quantity').text() || '1';
-        var price = $(this).find('.option_price span').text() || '0';
-    
-        var calcPrice = parseInt(price.replace(/[^\d]/g, '')) / parseInt(quantity)
-        var optionObj = { 
-            label: optionName,
-            count: quantity,
-            price: 0,
-        }
-
-        if($(this).hasClass('select_ext_prod')) {
-            optionObj.price = calcPrice;
-            selectedExtProdList.push(optionObj);
-        }else {
-            optionObj.price = priceType === 'fixed' ? calcPrice - basicPrice : calcPrice
-            selectedOptionList.push(optionObj);  
-        }
-    })
-
-    return { selectedOptionList, selectedExtProdList };
-}
-
-function setSuppliesData(btn_type) {
-    let optionLI = btn_type === 'page_btn' ? $('.page_selected_options .select_option_item') :  $('.popup_selected_options .select_option_item');
-    let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
-
-    let isBuyBtn = 'n';
-    
-    let totalPrice = priceType === 'fixed' ? ((allPrice + parseInt(addWorkPrice)).toLocaleString()) : '';
-
-    let categoryType = 'show'
-    let largeCategory = categoryType == 'supplies' ? "행사용품" : categoryType == 'show' ? "행사패키지" : cusFlag == '강연자' ? "강연자" : "프로필";
-    let categoryName =  '행사패키지';
-    
-
-    let suppliesData = {
-        priceType: priceType,
-        itemType: largeCategory,
-        categoryName: categoryName,
-        genre: genre,
-        options: selectedOptionList,
-        extProds: selectedExtProdList,
-        totalPrice: totalPrice
-    }
-
-    $('.form_product_info').val(JSON.stringify(suppliesData));
 }
 
 function open_bottom_sheet(target){
@@ -433,6 +386,8 @@ function close_bottom_sheet(target){
     $(".contants_cover").fadeOut(300);
     $("body").removeClass("active");
 }
+
+
 
 // 상세페이지 상단 이미지 영역
 $(document).on('click','.estimateDetail_profile_swiper .swiper-slide',function(){
@@ -452,41 +407,19 @@ $(document).on('click','.estimateDetail_list_more_btn',function(){
     $(this).siblings('[class^="estimateDetail_contentBox_list"]').toggleClass("full");
 });
 
+//견적문의하기 버튼
+$(document).on('click','.event_question_btn',function(){
+   console.log('event_question_btn');
+
+   sessionStorage.setItem("price", 2000000);
+
+   //alert('event_question_btn');
+});
 
 $(document).ready(function () {
 
-    if($('.basic_info').find('.estimateDetail_contentBox').length == 0) {
-        if($('.basic_info').find('.career_badge').length == 0) {
-            $('.basic_info').hide();
-        }else {
-            $('.basic_info .estimateDetail_titleBox').css("margin", 0);    
-        }
-    };
-
-    $('.estimateDetail_table').each(function(){
-      var rows = $(this).find('.estimateDetail_tr');
-      if((rows.length % 2) == 1){
-        $(this).addClass('estimateDetail_table_odd');
-      }else{
-        $(this).addClass('estimateDetail_table_even');
-      }
-    });
-
     basicPrice = parseInt($('.valid_price').text().replace(/[^\d]/g, ''));
 
-   try{
-        var params = (new URL(document.location)).searchParams;
-        if(params.get('main_menu_artist_uid')){
-            var newUrl = updateURLParameter(window.location.href, 'main_menu_artist_uid', '');
-            history.pushState(null, null, newUrl);
-        }
-    }catch(e){}
-
-
-    if($(window).width() < 1241) {
-        removeEmptySlide($('.empty_slide').length);
-    }
-    
     $('.dropdown_toggle').click(function () {
         console.log('dropdown_toggle!!!');
 
@@ -517,68 +450,8 @@ $(document).ready(function () {
         set_total_price();
     }
 
-    // 상세페이지 정보 영역 리스트 높이
-    let estimateDetailContentBoxSingleListItemHei = $('.estimateDetail_contentBox_list_single li').outerHeight(true);
-    let estimateDetailContentBoxDoubleListItemHei = $('.estimateDetail_contentBox_list_double li').outerHeight(true);
-
-    $('.estimateDetail_contentBox_list_single').each(function(){
-        let estimateDetailContentBoxListItemLeng = $(this).find('li').length;
-        
-        if (estimateDetailContentBoxListItemLeng < 6) {
-            $(this).css({
-                height: 'auto',
-            })
-            $(this).siblings('.estimateDetail_list_more_btn').hide();
-        } else {
-            $(this).css({
-                height: estimateDetailContentBoxSingleListItemHei * 5 + 'px',
-            })
-        }
-    })
-
-    $('.estimateDetail_contentBox_list_double').each(function(){
-        let estimateDetailContentBoxListItemLeng = $(this).find('li').length;
-        
-        if (estimateDetailContentBoxListItemLeng < 11) {
-            $(this).css({
-                height: 'auto',
-            })
-            $(this).siblings('.estimateDetail_list_more_btn').hide();
-        } else {
-            $(this).css({
-                height: estimateDetailContentBoxDoubleListItemHei * 5 + 'px',
-            })
-        }
-    })
-
-    // 상세페이지 상단 이미지 영역
-    let profileSwiperFisrt = $('.estimateDetail_profile_swiper .swiper-slide').first();
-    let profileSwiperFisrtBgUrl = profileSwiperFisrt.attr('data-bg-image');  
     
-    if(profileSwiperFisrtBgUrl) {
-        if($('.swiper-slide:not(.empty_slide)').length == 1 && $(window).width() > 1240) {
-            $('.estimateDetail_profile_imgWra').hide();
-        }  
-
-        profileSwiperFisrt.addClass('active');
-        $('.estimateDetail_profile_imgArea').attr('data-bg-image',profileSwiperFisrtBgUrl);
-    }else {
-        if($(window).width() > 1240) {
-            $('.estimateDetail_profile_imgWra').hide();
-        }
-        $('.estimateDetail_profile_imgArea').css({
-            backgroundColor:'#ededed'
-        });
-    }
-    
-
     imgSkeletonLoading('.swiper-slide, .estimateDetail_movie_item, .liveMov, .estimateDetail_profile_imgArea');    
-
-
-
 });
-
-
-
 
 </script>
