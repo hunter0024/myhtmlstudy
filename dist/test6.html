@@ -75,7 +75,13 @@
 
                     <a href="test7.html" class="link_expert_purple event_question_btn" >
                         견적 문의하기
-                    </a>                                               
+                    </a>
+                    <a class="storage_btn link_expert_purple event_question_btn" >
+                        스토리지저장
+                    </a>
+                    <a class="storage_load_btn link_expert_purple event_question_btn" >
+                        스토리지로드
+                    </a>
                 </div>
             </div>
         </div>
@@ -411,10 +417,147 @@ $(document).on('click','.estimateDetail_list_more_btn',function(){
 $(document).on('click','.event_question_btn',function(){
    console.log('event_question_btn');
 
-   sessionStorage.setItem("price", 2000000);
-
-   //alert('event_question_btn');
+   //sessionStorage.setItem("SessionStorage price", 2000000);
+   //localStorage.setItem("localStorage price", 100000);
 });
+
+
+function getIdxedDBValue(key) {
+    console.log('getIdxedDBValue');
+    const request = window.indexedDB.open('testIndexedDB');  // 1. DB 열기
+    request.onerror =(e)=> console.log(e.target.errorCode);
+  
+    request.onsuccess =(e)=> {
+      const db = request.result;
+      const transaction = db.transaction('testStore');      
+      transaction.onerror =(e)=> console.log('onerror');
+      transaction.oncomplete =(e)=> console.log('oncomplete');
+  
+      const objStore = transaction.objectStore('testStore');
+      const objStoreRequest = objStore.get(key);        // 2. get으로 데이터 접근
+      objStoreRequest.onsuccess =(e)=> {
+        console.log('objStoreRequest', objStoreRequest.result)
+      }
+    }
+}
+
+function updateIdxedDBValue(key, value) {
+    var request = window.indexedDB.open('testIndexedDB');  // 1. db 열기
+    request.onerror =(e)=> console.log(e.target.errorCode);
+  
+    request.onsuccess =(e)=> {
+      var db = request.result;
+      var transaction = db.transaction(["testStore"], 'readwrite');
+      transaction.onerror =(e)=> console.log('onerror');
+      transaction.oncomplete =(e)=> console.log('oncomplete');
+  
+      var objStore = transaction.objectStore("testStore");// 2. testStore 저장소 접근
+      var objStoreRequest = objStore.get(key);       // 3. key값으로 데이터 접근
+
+      objStoreRequest.onsuccess =(e)=> {
+        var updateRequest = objStore.put(value);     // 4. 수정
+        updateRequest.onerror =(e)=> console.log('udpate error');
+              updateRequest.onsuccess =(e)=> console.log('onsuccess');
+      }
+    }
+  }
+
+function updateIdxedDBValue2(key, value){
+    console.log('updateIdxedDBValue2');
+
+
+    var request = window.indexedDB.open('testIndexedDB');  // 1. db 열기
+    request.onerror =(e)=> console.log(e.target.errorCode);
+
+    var db = request.result;
+
+    let transaction = db.transaction(['testStore'], 'readwrite')
+    let objectStore = transaction.objectStore('testStore')
+
+
+    let updateRequest = objectStore.put(1234, 1)
+
+
+}
+
+//스토리지 저장 버튼
+$(document).on('click','.storage_btn',function(){
+    console.log('storage_btn');
+ 
+    sessionStorage.setItem("SessionStorage price", 2000000);
+    localStorage.setItem("localStorage price", 100000);
+
+
+    // indexedDB
+    if (window.indexedDB) {
+        var name = 'testIndexedDB';
+        var version = 1;
+        var db = null;
+        // IDBOpenDBRequest
+        var request = indexedDB.open(name, version);
+        // 기존의 저장된 데이터베이스보다 큰 버전 번호의 데이터베이스가 로드 될 때 트리거된다.
+        request.onupgradeneeded = function(event) { 
+          console.log('onupgradeneeded');
+          // IDBDatabase
+          db = request.result;
+          var key = "id";
+          var name = 'testStore';
+          // IDBObjectStore
+          var store = db.createObjectStore(name, { keyPath: key });
+          var indexName = 'by_name';
+          var price = 'price';
+          // IDBIndex
+          var index = store.createIndex(indexName, keyPath);
+          var obj = {
+            [key]: 1,
+            [price]: "name"
+          };
+          store.put({
+           [key]: 1,
+           [price]: 100000
+          });
+        };
+        request.onsuccess = function(event) {
+          console.log('onsuccess');
+          /*
+          db = request.result;
+          // IDBTransaction
+          var transaction = db.transaction(['testStore'], "readonly");
+          // IDBObjectStore
+          var objectStore = transaction.objectStore('testStore');
+          // IDBRequest
+          var cursor = objectStore.openCursor();
+            cursor.onsuccess = function(event) {
+              // IDBCursorWithValue
+              var cursor = event.target.result;
+              if ( cursor ) {
+                // {id: 1, name: "name"}
+                console.log(cursor.value)
+                cursor.continue();
+              } else {
+                console.log('end');
+              }
+            };*/
+        };
+      }
+      updateIdxedDBValue2(1,30000000);
+      //updateIdxedDBValue(1,30000000);
+      //updateIdxedDBValue(2,50000000);
+      //updateIdxedDBValue(3,70000000);
+
+
+      //getIdxedDBValue(3);
+
+ });
+
+ $(document).on('click','.storage_load_btn',function(){
+    console.log('storage_load_btn');
+ 
+
+
+ });
+
+ 
 
 $(document).ready(function () {
 

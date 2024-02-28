@@ -786,7 +786,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .estimate_detail_contants .btn_box {
-    position: absolute;
+    /* position: absolute; */
     width: calc(100% - 5em);
     bottom: 1.88em;
 }

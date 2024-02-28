@@ -28,11 +28,13 @@
     }
     RollingList($(".rolling_list_wrap"));
 
-    let price = sessionStorage.getItem("price");
-    console.log("price", price);
+    let sessionPrice = sessionStorage.getItem("SessionStorage price");
+    let localPrice = localStorage.getItem("localStorage price");
+
+    console.log("sessionPrice", sessionPrice);
+    console.log("localPrice", localPrice);
 
 
-    
 
   });
 </script>
