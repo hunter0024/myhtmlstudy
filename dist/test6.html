@@ -28,34 +28,46 @@
                     <div class="select_option_label">추가 상품</div>
                     <div class="select_option_dropdown">
                         <div class="select_dropdown page_option ext_prod_data">
-                            <button type="button" class="dropdown_toggle"><span>음향 시스템</span></button>
+                            <button type="button" class="dropdown_toggle"><span>테스트상품1</span></button>
                             <ul class="dropdown_content">
                                     <li>
                                         <button type="button" class="dropdown_item page_option_item ext_prod_info">
-                                            <span class="prod_info_val">음향 시스템 및 감독  </span>
+                                            <span class="prod_info_val">테스트상품 1-1</span>
+                                            <span>(+1,500,000원)</span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">테스트상품 1-2</span>
                                             <span>(+2,500,000원)</span>
                                         </button>
                                     </li>
-                            </ul>
-                        </div>
-                        <div class="select_dropdown page_option ext_prod_data">
-                            <button type="button" class="dropdown_toggle"><span>조명 시스템</span></button>
-                            <ul class="dropdown_content">
                                     <li>
                                         <button type="button" class="dropdown_item page_option_item ext_prod_info">
-                                            <span class="prod_info_val">조명 시스템 및 감독  </span>
-                                            <span>(+3,000,000원)</span>
+                                            <span class="prod_info_val">테스트상품 1-3</span>
+                                            <span>(+3,500,000원)</span>
                                         </button>
                                     </li>
                             </ul>
                         </div>
                         <div class="select_dropdown page_option ext_prod_data">
-                            <button type="button" class="dropdown_toggle"><span>안내데스크</span></button>
+                            <button type="button" class="dropdown_toggle"><span>테스트상품2</span></button>
                             <ul class="dropdown_content">
                                     <li>
                                         <button type="button" class="dropdown_item page_option_item ext_prod_info">
-                                            <span class="prod_info_val">테이블+제작물+배너2종  </span>
-                                            <span>(+400,000원)</span>
+                                            <span class="prod_info_val">테스트상품 2-1</span>
+                                            <span>(+350,000원)</span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="select_dropdown page_option ext_prod_data">
+                            <button type="button" class="dropdown_toggle"><span>테스트상품3</span></button>
+                            <ul class="dropdown_content">
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">테스트상품 3-1</span>
+                                            <span>(+5,600,000원)</span>
                                         </button>
                                     </li>
                             </ul>
@@ -76,12 +88,6 @@
                     <a href="test7.html" class="link_expert_purple event_question_btn" >
                         견적 문의하기
                     </a>
-                    <a class="storage_btn link_expert_purple event_question_btn" >
-                        스토리지저장
-                    </a>
-                    <a class="storage_load_btn link_expert_purple event_question_btn" >
-                        스토리지로드
-                    </a>
                 </div>
             </div>
         </div>
@@ -97,104 +103,20 @@ let includeVatFlag = 'n';
 let option_data = JSON.parse('[]');
 let selected_options = Array(option_data.length);
 
-let ext_prod_data = JSON.parse('[{"label":"\uc74c\ud5a5 \uc2dc\uc2a4\ud15c","extProd":[{"value":"\uc74c\ud5a5 \uc2dc\uc2a4\ud15c \ubc0f \uac10\ub3c5","price":"2500000","type":"quantity"}]},{"label":"\uc870\uba85 \uc2dc\uc2a4\ud15c","extProd":[{"value":"\uc870\uba85 \uc2dc\uc2a4\ud15c \ubc0f \uac10\ub3c5","price":"3000000","type":"quantity"}]},{"label":"\uc548\ub0b4\ub370\uc2a4\ud06c","extProd":[{"value":"\ud14c\uc774\ube14+\uc81c\uc791\ubb3c+\ubc30\ub1082\uc885","price":"400000","type":"quantity"}]},{"label":"\ubbf8\ub514\uc5b4 \uba85\ucc30 \ubc0f \uc785\uc7a5 \ud314\ucc0c","extProd":[{"value":"100\uc778 \uae30\uc900","price":"270000","type":"quantity"}]},{"label":"\ud3ec\ud1a0\uc874 \uc81c\uc791","extProd":[{"value":"\ud2b8\ub7ec\uc2a4 \ub610\ub294 \ud48d\uc120\uc544\uce58","price":"1000000","type":"quantity"}]},{"label":"\uc2dc\uc0c1 \ubcf4\ub4dc","extProd":[{"value":"1\uac1c (\ub514\uc790\uc778 \ubcc4\ub3c4)","price":"50000","type":"quantity"}]},{"label":"\ud589\uc0ac \uc2a4\ucf00\uce58","extProd":[{"value":"\uc0ac\uc9c4&\uc601\uc0c1 \ucd2c\uc601","price":"500000","type":"quantity"}]}]');
+let ext_prod_data = JSON.parse(`[{"label":"테스트상품1","extProd":[
+                                                                   {"value":"테스트 상품 1-1","price":"1500000","type":"quantity"}
+                                                                  ,{"value":"테스트 상품 1-2","price":"2500000","type":"quantity"}
+                                                                  ,{"value":"테스트 상품 1-3","price":"3500000","type":"quantity"}
+                                                                  ]
+                                 }
+                                ,{"label":"테스트상품2","extProd":[{"value":"테스트 상품 2-1","price":"350000","type":"quantity"}]}
+                                ,{"label":"테스트상품3","extProd":[{"value":"테스트 상품 3-1","price":"5600000","type":"quantity"}]}]`);
 
 let addWorkPrice = '0';
 let basicPrice = 0;
 let allPrice = 0;
 
 /* 함수 선언*/
-function imgSkeletonLoading(targetClass) {
-
-    console.log('imgSkeletonLoading');
-
-    $(targetClass).each(function () {
-        let imageBox = $(this);
-        if (imageBox.is(".loaded")) {
-            return;
-        }
-
-        let backgroundImageUrl = imageBox.data("bg-image");
-        imageBox.addClass("skeleton");
-
-        if (imageBox.is(".estimateDetail_profile_imgWra")) {
-            let imageDivs = imageBox.find(".swiper-slide");
-            let loadingCount = imageDivs.length;
-            $(imageDivs).each(function () {
-                let imageDiv = $(this);
-                backgroundImageUrl = $(imageDiv).data("bg-image");
-                $(imageDiv).css(
-                    "background-image",
-                    "url(" + backgroundImageUrl + ")"
-                );
-
-                // 이미지 로딩 완료 시 처리
-                let image = new Image();
-                image.src = backgroundImageUrl;
-                image.onload = function () {
-                    loadingCount--;
-                    if (loadingCount === 0) {
-                        imageBox.removeClass("skeleton");
-                        imageBox.addClass("loaded");
-                    }
-                };
-
-                image.onerror = function () {
-                    imageBox.removeClass("skeleton");
-                    imageBox.addClass("loaded");
-                };
-            });
-        } else if (
-            imageBox.is(".estimateDetail_movie_item") ||
-            imageBox.is(".video")
-        ) {
-            let iframe = $(this).find("iframe")[0];
-            $(iframe).on("load", function () {
-                imageBox.removeClass("skeleton");
-                imageBox.addClass("loaded");
-            });
-        } else {
-            if (imageBox.is(".img_wrapper")) {
-                let imageDiv = imageBox.find(".img")[0];
-                $(imageDiv).css(
-                    "background-image",
-                    "url(" + backgroundImageUrl + ")"
-                );
-            } else if (
-                imageBox.is(".main_plan_item") ||
-                imageBox.is(".liveMov")
-            ) {
-                let imgTag = imageBox.find("img")[0];
-                $(imgTag).attr("src", backgroundImageUrl);
-            } else {
-                // 배경 이미지 URL 설정
-                imageBox.css(
-                    "background-image",
-                    "url(" + backgroundImageUrl + ")"
-                );
-            }
-
-            if (backgroundImageUrl == "") {
-                imageBox.removeClass("skeleton");
-                imageBox.addClass("loaded");
-            }
-
-            // 이미지 로딩 완료 시 처리
-            let image = new Image();
-            image.src = backgroundImageUrl;
-
-            image.onload = function () {
-                imageBox.removeClass("skeleton");
-                imageBox.addClass("loaded");
-            };
-
-            image.onerror = function () {
-                imageBox.removeClass("skeleton");
-                imageBox.addClass("loaded");
-            };
-        }
-    });
-}
 
 function optionSelect(isPage, clickItem) {
 
@@ -377,8 +299,11 @@ function set_total_price() {
     if(priceType == 'fixed') {
         if(allPrice > 0) {
             totalPrice = allPrice + parseInt(addWorkPrice);
+            sessionStorage.setItem("totalPrice", totalPrice);
         }
         $('.total_price strong').text(totalPrice.toLocaleString());  
+
+        console.log('totalPrice', totalPrice);
     }
 }
 
@@ -422,143 +347,6 @@ $(document).on('click','.event_question_btn',function(){
 });
 
 
-function getIdxedDBValue(key) {
-    console.log('getIdxedDBValue');
-    const request = window.indexedDB.open('testIndexedDB');  // 1. DB 열기
-    request.onerror =(e)=> console.log(e.target.errorCode);
-  
-    request.onsuccess =(e)=> {
-      const db = request.result;
-      const transaction = db.transaction('testStore');      
-      transaction.onerror =(e)=> console.log('onerror');
-      transaction.oncomplete =(e)=> console.log('oncomplete');
-  
-      const objStore = transaction.objectStore('testStore');
-      const objStoreRequest = objStore.get(key);        // 2. get으로 데이터 접근
-      objStoreRequest.onsuccess =(e)=> {
-        console.log('objStoreRequest', objStoreRequest.result)
-      }
-    }
-}
-
-function updateIdxedDBValue(key, value) {
-    var request = window.indexedDB.open('testIndexedDB');  // 1. db 열기
-    request.onerror =(e)=> console.log(e.target.errorCode);
-  
-    request.onsuccess =(e)=> {
-      var db = request.result;
-      var transaction = db.transaction(["testStore"], 'readwrite');
-      transaction.onerror =(e)=> console.log('onerror');
-      transaction.oncomplete =(e)=> console.log('oncomplete');
-  
-      var objStore = transaction.objectStore("testStore");// 2. testStore 저장소 접근
-      var objStoreRequest = objStore.get(key);       // 3. key값으로 데이터 접근
-
-      objStoreRequest.onsuccess =(e)=> {
-        var updateRequest = objStore.put(value);     // 4. 수정
-        updateRequest.onerror =(e)=> console.log('udpate error');
-              updateRequest.onsuccess =(e)=> console.log('onsuccess');
-      }
-    }
-  }
-
-function updateIdxedDBValue2(key, value){
-    console.log('updateIdxedDBValue2');
-
-
-    var request = window.indexedDB.open('testIndexedDB');  // 1. db 열기
-    request.onerror =(e)=> console.log(e.target.errorCode);
-
-    var db = request.result;
-
-    let transaction = db.transaction(['testStore'], 'readwrite')
-    let objectStore = transaction.objectStore('testStore')
-
-
-    let updateRequest = objectStore.put(1234, 1)
-
-
-}
-
-//스토리지 저장 버튼
-$(document).on('click','.storage_btn',function(){
-    console.log('storage_btn');
- 
-    sessionStorage.setItem("SessionStorage price", 2000000);
-    localStorage.setItem("localStorage price", 100000);
-
-
-    // indexedDB
-    if (window.indexedDB) {
-        var name = 'testIndexedDB';
-        var version = 1;
-        var db = null;
-        // IDBOpenDBRequest
-        var request = indexedDB.open(name, version);
-        // 기존의 저장된 데이터베이스보다 큰 버전 번호의 데이터베이스가 로드 될 때 트리거된다.
-        request.onupgradeneeded = function(event) { 
-          console.log('onupgradeneeded');
-          // IDBDatabase
-          db = request.result;
-          var key = "id";
-          var name = 'testStore';
-          // IDBObjectStore
-          var store = db.createObjectStore(name, { keyPath: key });
-          var indexName = 'by_name';
-          var price = 'price';
-          // IDBIndex
-          var index = store.createIndex(indexName, keyPath);
-          var obj = {
-            [key]: 1,
-            [price]: "name"
-          };
-          store.put({
-           [key]: 1,
-           [price]: 100000
-          });
-        };
-        request.onsuccess = function(event) {
-          console.log('onsuccess');
-          /*
-          db = request.result;
-          // IDBTransaction
-          var transaction = db.transaction(['testStore'], "readonly");
-          // IDBObjectStore
-          var objectStore = transaction.objectStore('testStore');
-          // IDBRequest
-          var cursor = objectStore.openCursor();
-            cursor.onsuccess = function(event) {
-              // IDBCursorWithValue
-              var cursor = event.target.result;
-              if ( cursor ) {
-                // {id: 1, name: "name"}
-                console.log(cursor.value)
-                cursor.continue();
-              } else {
-                console.log('end');
-              }
-            };*/
-        };
-      }
-      updateIdxedDBValue2(1,30000000);
-      //updateIdxedDBValue(1,30000000);
-      //updateIdxedDBValue(2,50000000);
-      //updateIdxedDBValue(3,70000000);
-
-
-      //getIdxedDBValue(3);
-
- });
-
- $(document).on('click','.storage_load_btn',function(){
-    console.log('storage_load_btn');
- 
-
-
- });
-
- 
-
 $(document).ready(function () {
 
     basicPrice = parseInt($('.valid_price').text().replace(/[^\d]/g, ''));
@@ -593,8 +381,6 @@ $(document).ready(function () {
         set_total_price();
     }
 
-    
-    imgSkeletonLoading('.swiper-slide, .estimateDetail_movie_item, .liveMov, .estimateDetail_profile_imgArea');    
 });
 
 </script>
