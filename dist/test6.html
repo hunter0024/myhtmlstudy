@@ -85,6 +85,9 @@
                     <a href="https://red-slippers.imweb.me/16" class="link_expert_purple event_question_btn">
                         견적 문의하기
                     </a>
+                    <a href="test7.html" class="link_expert_purple event_question_btn">
+                        견적 문의하기
+                    </a>
                 </div>
             </div>
         </div>
@@ -119,11 +122,9 @@ let totalPrice = 0;
 /* 함수 선언*/
 
 function optionSelect(isPage, clickItem) {
-
-    console.log('optionSelect');
+    //console.log('optionSelect');
 
     let type = isPage ? "page" : "popup";
-
     var parent = $(clickItem).closest(`.${type}_option`);
 
     if($(clickItem).hasClass('ext_prod_info')) {            
@@ -202,15 +203,11 @@ function optionSelect(isPage, clickItem) {
 
 //닫기 버튼
 $('.page_selected_options, .popup_selected_options').on('click','.btn_close',function() {
-    console.log('btn_close');
+    //console.log('btn_close');
 
     let idx = $(this).closest('.select_option_item').index();
     let pageCloseOption = $('.page_selected_options .select_option_item').eq(idx);
     let popupCloseOption =  $('.popup_selected_options .select_option_item').eq(idx);
-
-    var extProdIdx = $(`.${type}_option.ext_prod_data`).index(parent);
-    var extProdValIdx = parent.find(`.${type}_option_item`).index(clickItem);
-
 
     pageCloseOption.remove();
     popupCloseOption.remove();
@@ -225,8 +222,7 @@ $('.page_selected_options, .popup_selected_options').on('click','.btn_close',fun
 
 //플러스 마이너스
 $('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .btn_plus',function() {
-
-    console.log('btn_minus btn_plus');
+    //console.log('btn_minus btn_plus');
 
     let idx = $(this).closest('.select_option_item').index();
     let pageQuantityOption = $('.page_selected_options .select_option_item').eq(idx);
@@ -261,7 +257,7 @@ $('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .bt
 
 
 function add_select_option_item(value, price, isPage, optionType, isExtProd = false) {
-    console.log('add_select_option_item');
+    //console.log('add_select_option_item');
 
     let type = isPage ? "page" : "popup";
     let quantity = 1;
@@ -299,7 +295,7 @@ function add_select_option_item(value, price, isPage, optionType, isExtProd = fa
 }
 
 function set_total_price() {
-    console.log('set_total_price');
+    //console.log('set_total_price');
 
     if(priceType == 'fixed') {
         if(allPrice > 0) {
@@ -371,7 +367,7 @@ $(document).on('click','.estimateDetail_list_more_btn',function(){
 
 //견적문의하기 버튼
 $(document).on('click','.event_question_btn',function(){
-   console.log('event_question_btn');
+   //console.log('event_question_btn');
    let btn_type = 'page_btn';
    let optionLI = btn_type === 'page_btn' ? $('.page_selected_options .select_option_item') :  $('.popup_selected_options .select_option_item');
    let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
@@ -392,7 +388,7 @@ $(document).ready(function () {
     basicPrice = parseInt($('.valid_price').text().replace(/[^\d]/g, ''));
 
     $('.dropdown_toggle').click(function () {
-        console.log('dropdown_toggle!!!');
+        //console.log('dropdown_toggle!!!');
 
         var parent = $(this).closest('.select_dropdown');
         if (parent.hasClass('is_active')){

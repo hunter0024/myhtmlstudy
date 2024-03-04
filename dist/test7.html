@@ -3,6 +3,13 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 <script>
+
+$(document).on('click','._input_form_submit',function(){
+  //console.log('_input_form_submit');
+  sessionStorage.clear();
+});
+
+
   $(document).ready(function () {
     function RollingList(listName) {
       let listHeight = 0;
@@ -30,22 +37,24 @@
 
     let priceInfo = JSON.parse(sessionStorage.getItem("priceInfo"));
     let selectedExtProdList = JSON.parse(sessionStorage.getItem("selectedExtProdList"));
+    let textExtProd = '';
     
-    if ((priceInfo != null && priceInfo != '') && (selectedExtProdList != null && selectedExtProdList != '' )){
-
+    if (priceInfo != null && priceInfo != ''){
       console.log("priceInfo basicPrice", priceInfo.basicPrice);
       console.log("priceInfo totalPrice", priceInfo.totalPrice);
-      console.log("selectedExtProdList", selectedExtProdList);
 
-      let textExtProd = '';
+      if (selectedExtProdList != null && selectedExtProdList != '' ){
+        //console.log("selectedExtProdList", selectedExtProdList);
 
-      for(let prod of selectedExtProdList){
-        textExtProd+= '추가 상품명 : ' + prod.label + '\n' + '수량 : ' + prod.count.toLocaleString() + '\n' + '추가금액 : ' + prod.price.toLocaleString() + '\n\n';
+        for(let prod of selectedExtProdList){
+          textExtProd+= '추가 상품명 : ' + prod.label + '\n' + '수량 : ' + prod.count.toLocaleString() + '\n' + '추가금액 : ' + prod.price.toLocaleString() + '원\n\n';
+        }
+
       }
-      textExtProd+='총 금액 : ' +  priceInfo.totalPrice.toLocaleString()
-      console.log('textExtProd', textExtProd);
-  
-      $('#input_text_area_V4b4T1b0a2').attr("disabled" , true); //설정
+      textExtProd+='총 금액 : ' +  priceInfo.totalPrice.toLocaleString();
+      //console.log('textExtProd', textExtProd);
+
+      $('#input_text_area_V4b4T1b0a2').attr("readonly" , true); 
       $('#input_text_area_V4b4T1b0a2').val(textExtProd);
     }
   });
