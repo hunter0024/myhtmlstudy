@@ -74,6 +74,7 @@
                         </div>
                     </div> 
                 </div>
+
                 <ul class="select_option_list page_selected_options">
 
                 </ul>
@@ -81,11 +82,7 @@
             <!-- // v1.0.0 옵션 선택 -->
             <div class="btn_box bottom_menu">
                 <div class="harf_box">
-                    <!-- <a href="https://red-slippers.imweb.me/16" class="link_expert_purple event_question_btn" onclick="gtag('event', '견적 문의하기 버튼', {'event_category': 'directOffer', 'event_label': '버튼 클릭'});">
-                        견적 문의하기
-                    </a> -->
-
-                    <a href="test7.html" class="link_expert_purple event_question_btn" >
+                    <a href="https://red-slippers.imweb.me/16" class="link_expert_purple event_question_btn">
                         견적 문의하기
                     </a>
                 </div>
@@ -103,18 +100,21 @@ let includeVatFlag = 'n';
 let option_data = JSON.parse('[]');
 let selected_options = Array(option_data.length);
 
-let ext_prod_data = JSON.parse(`[{"label":"테스트상품1","extProd":[
-                                                                   {"value":"테스트 상품 1-1","price":"1500000","type":"quantity"}
-                                                                  ,{"value":"테스트 상품 1-2","price":"2500000","type":"quantity"}
-                                                                  ,{"value":"테스트 상품 1-3","price":"3500000","type":"quantity"}
-                                                                  ]
-                                 }
-                                ,{"label":"테스트상품2","extProd":[{"value":"테스트 상품 2-1","price":"350000","type":"quantity"}]}
-                                ,{"label":"테스트상품3","extProd":[{"value":"테스트 상품 3-1","price":"5600000","type":"quantity"}]}]`);
+let arr_prod_data = [{"label":"테스트상품1","extProd":[
+                                                          {"value":"테스트 상품 1-1","price":"1500000","type":"quantity"}
+                                                         ,{"value":"테스트 상품 1-2","price":"2500000","type":"quantity"}
+                                                         ,{"value":"테스트 상품 1-3","price":"3500000","type":"quantity"}
+                                                      ]
+                     }
+                    ,{"label":"테스트상품2","extProd":[{"value":"테스트 상품 2-1","price":"350000","type":"quantity"}]}
+                    ,{"label":"테스트상품3","extProd":[{"value":"테스트 상품 3-1","price":"5600000","type":"quantity"}]}];
+
+let ext_prod_data = JSON.parse(JSON.stringify(arr_prod_data));
 
 let addWorkPrice = '0';
 let basicPrice = 0;
 let allPrice = 0;
+let totalPrice = 0;
 
 /* 함수 선언*/
 
@@ -154,6 +154,8 @@ function optionSelect(isPage, clickItem) {
         if(!isDuplicateExtProd){
             allPrice += parseInt(selectExtProdData.price);
             add_select_option_item(selectExtProdVal, parseInt(selectExtProdData.price), isPage, selectExtProdData.type, true);
+
+            arr_prod_data[extProdIdx].extProd[extProdValIdx].quantity = 1;
         }
         
     }else {
@@ -183,6 +185,7 @@ function optionSelect(isPage, clickItem) {
                 var optionPrice = selected_options.map(v => parseInt(v.price)).reduce((acc, curr) => acc + curr,  priceType != 'fixed' ? 0 : basicPrice);
                 allPrice += optionPrice;
                 add_select_option_item(selectedValueStr, optionPrice, isPage, optionType);
+                arr_prod_data[extProdIdx].extProd[extProdValIdx].quantity = 1;
             }
             
             
@@ -204,6 +207,10 @@ $('.page_selected_options, .popup_selected_options').on('click','.btn_close',fun
     let idx = $(this).closest('.select_option_item').index();
     let pageCloseOption = $('.page_selected_options .select_option_item').eq(idx);
     let popupCloseOption =  $('.popup_selected_options .select_option_item').eq(idx);
+
+    var extProdIdx = $(`.${type}_option.ext_prod_data`).index(parent);
+    var extProdValIdx = parent.find(`.${type}_option_item`).index(clickItem);
+
 
     pageCloseOption.remove();
     popupCloseOption.remove();
@@ -241,7 +248,6 @@ $('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .bt
             allPrice += optionBasicPrice * (calcFlag);
             set_total_price();
         }
-        
         
         let priceStr = (optionBasicPrice * calcQuantity).toLocaleString();
         pageQuantityOption.find('.option_price span').text(priceStr);
@@ -295,18 +301,45 @@ function add_select_option_item(value, price, isPage, optionType, isExtProd = fa
 function set_total_price() {
     console.log('set_total_price');
 
-    let totalPrice = 0;
     if(priceType == 'fixed') {
         if(allPrice > 0) {
             totalPrice = allPrice + parseInt(addWorkPrice);
-            sessionStorage.setItem("totalPrice", totalPrice);
         }
-        $('.total_price strong').text(totalPrice.toLocaleString());  
-
-        console.log('totalPrice', totalPrice);
+        $('.total_price strong').text(totalPrice.toLocaleString()); 
     }
 }
 
+function setOptionList(optionLI) {
+
+    let selectedOptionList = [];
+    let selectedExtProdList = [];
+
+    
+    optionLI.each(function() {
+        var optionName = $(this).find('.select_option_info span').text();
+        var quantity = $(this).find('.quantity').text() || '1';
+        var price = $(this).find('.option_price span').text() || '0';
+    
+        var calcPrice = parseInt(price.replace(/[^\d]/g, '')) / parseInt(quantity)
+        var optionObj = { 
+            label: optionName,
+            count: quantity,
+            price: 0,
+        }
+
+        if($(this).hasClass('select_ext_prod')) {
+            optionObj.price = calcPrice;
+            selectedExtProdList.push(optionObj);
+        }else {
+            optionObj.price = priceType === 'fixed' ? calcPrice - basicPrice : calcPrice
+            selectedOptionList.push(optionObj);  
+        }
+    })
+
+    return { selectedOptionList, selectedExtProdList };
+}
+
+/*손가락 버튼 적용*/
 function open_bottom_sheet(target){
     $(target).addClass('is_show');
     $(".contants_cover").fadeIn(300);
@@ -317,8 +350,6 @@ function close_bottom_sheet(target){
     $(".contants_cover").fadeOut(300);
     $("body").removeClass("active");
 }
-
-
 
 // 상세페이지 상단 이미지 영역
 $(document).on('click','.estimateDetail_profile_swiper .swiper-slide',function(){
@@ -341,11 +372,20 @@ $(document).on('click','.estimateDetail_list_more_btn',function(){
 //견적문의하기 버튼
 $(document).on('click','.event_question_btn',function(){
    console.log('event_question_btn');
+   let btn_type = 'page_btn';
+   let optionLI = btn_type === 'page_btn' ? $('.page_selected_options .select_option_item') :  $('.popup_selected_options .select_option_item');
+   let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
 
-   //sessionStorage.setItem("SessionStorage price", 2000000);
+   var priceObj		= new Object();
+   priceObj.basicPrice = basicPrice;
+   priceObj.totalPrice = totalPrice;
+   
+   sessionStorage.setItem("selectedExtProdList", JSON.stringify(selectedExtProdList));
+   sessionStorage.setItem("priceInfo", JSON.stringify(priceObj));
+
+
    //localStorage.setItem("localStorage price", 100000);
 });
-
 
 $(document).ready(function () {
 
