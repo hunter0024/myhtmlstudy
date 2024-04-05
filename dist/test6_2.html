@@ -1,0 +1,437 @@
+
+<link rel="stylesheet" href="./test6Style.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+
+<div class="estimate_detail_contants">
+    <div class="estimateDetail_profile_infoWra">
+        <div class="estimateDetail_profile_textArea">
+            <h5 class="estimateDetail_profile_name" style="font-weight:bold; color: #000;">
+				패키지 상품 - 음향장비임차
+            </h5>
+            <div class="estimateDetail_profile_categoryBox">
+                <span class="estimateDetail_profile_categoryItem">카테고리</span>
+            </div>
+            <p class="estimateDetail_profile_count">
+                <span>강조</span> 광고
+            </p>
+
+            <div class="price_box">
+                <span class="valid_price">1,000,000원</span>
+                <div class="add_price_info">
+                    <span class="vat_info">*부가세 별도</span>
+                </div>
+            </div>
+                                                                    
+            <div class="select_option_wrap">
+                <div class="select_option_area">
+                    <div class="select_option_label">추가 상품</div>
+                    <div class="select_option_dropdown">
+                        <div class="select_dropdown page_option ext_prod_data">
+                            <button type="button" class="dropdown_toggle"><span>가나다</span></button>
+                            <ul class="dropdown_content">
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">가나다 옵션1</span>
+                                            <span>(+500,000원)</span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">가나다 옵션2</span>
+                                            <span>(+1,200,000원)</span>
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">가나다 옵션3</span>
+                                            <span>(+2,200,000원)</span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="select_dropdown page_option ext_prod_data">
+                            <button type="button" class="dropdown_toggle"><span>라마</span></button>
+                            <ul class="dropdown_content">
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">라마 옵션1</span>
+                                            <span>(+250,000원)</span>
+                                        </button>
+                                    </li>
+							        <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">라마 옵션2</span>
+                                            <span>(+500,000원)</span>
+                                        </button>
+                                    </li>
+							         <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">라마 옵션3</span>
+                                            <span>(+250,000원)</span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                        <div class="select_dropdown page_option ext_prod_data">
+                            <button type="button" class="dropdown_toggle"><span>바사</span></button>
+                            <ul class="dropdown_content">
+                                    <li>
+                                        <button type="button" class="dropdown_item page_option_item ext_prod_info">
+                                            <span class="prod_info_val">바사 옵션1</span>
+                                            <span>(+1,600,000원)</span>
+                                        </button>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+
+                <ul class="select_option_list page_selected_options">
+
+                </ul>
+            </div>                            
+            <!-- // v1.0.0 옵션 선택 -->
+            <div class="btn_box bottom_menu">
+                <div class="harf_box">
+                    <a href="/package_form" class="link_expert_purple event_question_btn">
+                        견적 문의하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+/* 변수 선언*/
+let priceType = 'fixed';
+let includeVatFlag = 'n';
+
+let option_data = JSON.parse('[]');
+let selected_options = Array(option_data.length);
+
+let arr_prod_data = [{"label":"가나다","extProd":[
+                                                          {"value":"가나다 옵션1","price":"500000","type":"quantity"}
+                                                         ,{"value":"가나다 옵션2","price":"1200000","type":"quantity"}
+                                                         ,{"value":"가나다 옵션3","price":"2200000","type":"quantity"}
+                                                 ]
+                     }
+                    ,{"label":"라마","extProd":[
+                                                    {"value":"라마 옵션1","price":"250000","type":"quantity"}
+                                                    ,{"value":"라마 옵션2","price":"500000","type":"quantity"}
+                                                    ,{"value":"라마 옵션3","price":"250000","type":"quantity"}
+                                               ]
+                      }
+                    ,{"label":"바사","extProd":[{"value":"바사 옵션1","price":"1600000","type":"quantity"}]}];
+
+let ext_prod_data = JSON.parse(JSON.stringify(arr_prod_data));
+
+let addWorkPrice = '0';
+let basicPrice = 0;
+let allPrice = 0;
+let totalPrice = 0;
+
+/* 함수 선언*/
+
+function optionSelect(isPage, clickItem) {
+    //console.log('optionSelect');
+
+    let type = isPage ? "page" : "popup";
+    var parent = $(clickItem).closest(`.${type}_option`);
+
+    if($(clickItem).hasClass('ext_prod_info')) {            
+        var extProdIdx = $(`.${type}_option.ext_prod_data`).index(parent);
+        var extProdValIdx = parent.find(`.${type}_option_item`).index(clickItem);
+        var selectExtProdData = (ext_prod_data[extProdIdx].extProd[extProdValIdx]);
+        var selectExtProdVal = selectExtProdData.value;
+
+        $(parent).children('.dropdown_toggle').children('span').text(ext_prod_data[extProdIdx].label);   
+        let dupCnt = $(".prod_info_val").filter(function() { 
+            return $(this).text().trim() === selectExtProdVal
+        }).length;
+
+        if(dupCnt > 1) {
+            selectExtProdVal = selectExtProdData.value + ` (${ext_prod_data[extProdIdx].label})` 
+        }
+
+        var isDuplicateExtProd = false;
+
+        $(`.select_option_info span`).each(function() {
+            if($(this).text() === selectExtProdVal) {
+                alert('이미 추가된 상품입니다.')
+                isDuplicateExtProd = true;
+                return false; 
+            }
+        })
+
+        if(!isDuplicateExtProd){
+            allPrice += parseInt(selectExtProdData.price);
+            add_select_option_item(selectExtProdVal, parseInt(selectExtProdData.price), isPage, selectExtProdData.type, true);
+
+            arr_prod_data[extProdIdx].extProd[extProdValIdx].quantity = 1;
+        }
+        
+    }else {
+        parent.addClass('option_selected');
+        var optionIdx = $(`.${type}_option.option_data`).index(parent);
+        var optionValIdx = parent.find(`.${type}_option_item`).index(clickItem);
+
+        // selected_options에 값이 있을 경우엔 값 수정, 없을 경우 값 추가
+        selected_options[optionIdx] = (option_data[optionIdx].option[optionValIdx]);
+        
+        if($(`.${type}_option.option_data`).length == $('.option_selected').length) {
+            var selectedValueStr = selected_options.map(v => v.value).join(" / ");
+
+
+            var isDuplicateOption = false;
+
+            $(`.select_option_info span`).each(function() {
+                if($(this).text() === selectedValueStr) {
+                    alert('이미 추가된 옵션입니다.')
+                    isDuplicateOption = true;
+                    return false; 
+                }
+            })
+
+            if(!isDuplicateOption) {
+                let optionType = 'quantity';
+                var optionPrice = selected_options.map(v => parseInt(v.price)).reduce((acc, curr) => acc + curr,  priceType != 'fixed' ? 0 : basicPrice);
+                allPrice += optionPrice;
+                add_select_option_item(selectedValueStr, optionPrice, isPage, optionType);
+                arr_prod_data[extProdIdx].extProd[extProdValIdx].quantity = 1;
+            }
+            
+            
+            $(`.${type}_option.option_data`).removeClass('option_selected');
+            selected_options = Array($(`.${type}_option.option_data`).length);
+
+            $(`.${type}_option.option_data`).each(function() {
+                $(this).children('.dropdown_toggle').children('span').text(option_data[$(`.${type}_option`).index(this)].label);
+            });
+        }
+    }        
+}
+
+
+//닫기 버튼
+$('.page_selected_options, .popup_selected_options').on('click','.btn_close',function() {
+    //console.log('btn_close');
+
+    let idx = $(this).closest('.select_option_item').index();
+    let pageCloseOption = $('.page_selected_options .select_option_item').eq(idx);
+    let popupCloseOption =  $('.popup_selected_options .select_option_item').eq(idx);
+
+    pageCloseOption.remove();
+    popupCloseOption.remove();
+
+    let price = pageCloseOption.find('.option_price span').text().replace(/,/g, "");
+    
+    if(price){
+        allPrice -= price;
+        set_total_price();
+    }      
+})
+
+//플러스 마이너스
+$('.page_selected_options, .popup_selected_options').on('click','.btn_minus, .btn_plus',function() {
+    //console.log('btn_minus btn_plus');
+
+    let idx = $(this).closest('.select_option_item').index();
+    let pageQuantityOption = $('.page_selected_options .select_option_item').eq(idx);
+    let popupQuantityOption =  $('.popup_selected_options .select_option_item').eq(idx);
+
+    let quantityValue = $(this).siblings('.quantity').text();
+    let optionPriceValue = $(this).parent().siblings('.option_price').children('span').text();
+    let calcFlag = $(this).hasClass('btn_plus') ? 1 : -1;
+
+    if($(this).hasClass('btn_minus') && quantityValue == 1) {
+        return;
+    }
+    
+    let calcQuantity = parseInt(quantityValue) + (calcFlag);
+    
+    if(optionPriceValue.length > 0) {
+        const optionBasicPrice = parseInt(optionPriceValue.replace(/,/g, "")) / parseInt(quantityValue);
+        if(priceType == 'fixed') {
+            allPrice += optionBasicPrice * (calcFlag);
+            set_total_price();
+        }
+        
+        let priceStr = (optionBasicPrice * calcQuantity).toLocaleString();
+        pageQuantityOption.find('.option_price span').text(priceStr);
+        popupQuantityOption.find('.option_price span').text(priceStr);
+    }
+
+
+    pageQuantityOption.find('.quantity').text(calcQuantity);
+    popupQuantityOption.find('.quantity').text(calcQuantity);        
+});
+
+
+function add_select_option_item(value, price, isPage, optionType, isExtProd = false) {
+    //console.log('add_select_option_item');
+
+    let type = isPage ? "page" : "popup";
+    let quantity = 1;
+
+    selectOptionLI = 
+    `<li class="select_option_item ${isExtProd ? 'select_ext_prod' : ''}">
+        <div class="select_option_info">
+            <span>${value}</span>
+            <button type="button" class="btn_close"> X </button>
+        </div>`;
+
+    if(optionType == 'quantity' || price > 0) {
+        selectOptionLI += `<div class="select_option_count">`;
+        if(optionType == 'quantity') {    
+            selectOptionLI += 
+                `<div class="count_area">
+                    <button type="button" class="btn_minus"> - </button>
+                    <span class='quantity'>1</span>
+                    <button type="button" class="btn_plus"> + </button>
+                </div>`;
+        }
+        
+        if(price > 0) {
+            selectOptionLI += `<div class="option_price">${priceType == 'variable' ? '+' : ''} <span>${price.toLocaleString()}</span>원</div>`;  
+        }
+        selectOptionLI += `</div>`
+    }
+    selectOptionLI += `</li>`
+
+    set_total_price();
+
+    $(`.page_selected_options`).append(selectOptionLI);
+    $(`.popup_selected_options`).append(selectOptionLI);
+
+}
+
+function set_total_price() {
+    //console.log('set_total_price');
+
+    if(priceType == 'fixed') {
+        if(allPrice > 0) {
+            totalPrice = allPrice + parseInt(addWorkPrice);
+        }
+        $('.total_price strong').text(totalPrice.toLocaleString()); 
+    }
+}
+
+function setOptionList(optionLI) {
+
+    let selectedOptionList = [];
+    let selectedExtProdList = [];
+
+    
+    optionLI.each(function() {
+        var optionName = $(this).find('.select_option_info span').text();
+        var quantity = $(this).find('.quantity').text() || '1';
+        var price = $(this).find('.option_price span').text() || '0';
+    
+        var calcPrice = parseInt(price.replace(/[^\d]/g, '')) / parseInt(quantity)
+        var optionObj = { 
+            label: optionName,
+            count: quantity,
+            price: 0,
+        }
+
+        if($(this).hasClass('select_ext_prod')) {
+            optionObj.price = calcPrice;
+            selectedExtProdList.push(optionObj);
+        }else {
+            optionObj.price = priceType === 'fixed' ? calcPrice - basicPrice : calcPrice
+            selectedOptionList.push(optionObj);  
+        }
+    })
+
+    return { selectedOptionList, selectedExtProdList };
+}
+
+/*손가락 버튼 적용*/
+function open_bottom_sheet(target){
+    $(target).addClass('is_show');
+    $(".contants_cover").fadeIn(300);
+    $("body").addClass("active");
+}
+function close_bottom_sheet(target){
+    $(target).removeClass('is_show');
+    $(".contants_cover").fadeOut(300);
+    $("body").removeClass("active");
+}
+
+// 상세페이지 상단 이미지 영역
+$(document).on('click','.estimateDetail_profile_swiper .swiper-slide',function(){
+    if($(this).hasClass('empty_slide')) {
+        return;
+    }
+    let bckImg = $(this).css('background-image');
+
+    $(this).addClass('active').siblings().removeClass('active');
+    $('.estimateDetail_profile_imgArea').css({
+        backgroundImage:bckImg
+    })
+})
+
+// 상세페이지 정보 영역 리스트
+$(document).on('click','.estimateDetail_list_more_btn',function(){
+    $(this).siblings('[class^="estimateDetail_contentBox_list"]').toggleClass("full");
+});
+
+//견적문의하기 버튼
+$(document).on('click','.event_question_btn',function(){
+   //console.log('event_question_btn');
+   let btn_type = 'page_btn';
+   let optionLI = btn_type === 'page_btn' ? $('.page_selected_options .select_option_item') :  $('.popup_selected_options .select_option_item');
+   let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
+
+   var priceObj		= new Object();
+   priceObj.basicPrice = basicPrice;
+   priceObj.totalPrice = totalPrice;
+   
+   sessionStorage.setItem("selectedExtProdList", JSON.stringify(selectedExtProdList));
+   sessionStorage.setItem("priceInfo", JSON.stringify(priceObj));
+
+
+   //localStorage.setItem("localStorage price", 100000);
+});
+
+$(document).ready(function () {
+
+    basicPrice = parseInt($('.valid_price').text().replace(/[^\d]/g, ''));
+
+    $('.dropdown_toggle').click(function () {
+        //console.log('dropdown_toggle!!!');
+
+        var parent = $(this).closest('.select_dropdown');
+        if (parent.hasClass('is_active')){
+            parent.removeClass('is_active');
+        }else {
+            $('.select_dropdown').removeClass('is_active');
+            parent.addClass('is_active');
+        }
+    });
+
+    $('.dropdown_item').click(function () {
+        var parent = $(this).closest('.select_dropdown');
+        parent.removeClass('is_active');
+        parent.children('.dropdown_toggle').children('span').text($(this).text());
+
+        if($(this).hasClass('page_option_item')) {
+            optionSelect(true, this)
+        }else {
+            optionSelect(false, this)
+        };
+    });
+
+    // 옵션은 없지만 추가상품이 있는 경우와 둘 다 없는 경우 총 상품 금액에 상품 금액 설정
+    if((ext_prod_data.length > 0 && option_data.length == 0) || (ext_prod_data.length == 0 && option_data.length == 0)) {
+        allPrice = basicPrice;
+        set_total_price();
+    }
+
+});
+
+</script>
