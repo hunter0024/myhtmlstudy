@@ -40,8 +40,11 @@ $(document).on('click','._input_form_submit',function(){
     let textExtProd = '';
     
     if (priceInfo != null && priceInfo != ''){
+      //console.log("priceInfo profileName", priceInfo.profileName);
       //console.log("priceInfo basicPrice", priceInfo.basicPrice);
       //console.log("priceInfo totalPrice", priceInfo.totalPrice);
+
+      textExtProd += priceInfo.profileName+ '\n' + '금액 : ' + priceInfo.basicPrice.toLocaleString() + '원\n\n';
 
       if (selectedExtProdList != null && selectedExtProdList != '' ){
         //console.log("selectedExtProdList", selectedExtProdList);

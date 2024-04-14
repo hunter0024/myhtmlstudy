@@ -7,7 +7,7 @@
     <div class="estimateDetail_profile_infoWra">
         <div class="estimateDetail_profile_textArea">
             <h1 class="estimateDetail_profile_name">
-                    제목
+                <span class="profile_name">패키지 상품 - 음향장비임차</span>
             </h1>
             <div class="estimateDetail_profile_categoryBox">
                 <span class="estimateDetail_profile_categoryItem">카테고리</span>
@@ -118,6 +118,7 @@ let addWorkPrice = '0';
 let basicPrice = 0;
 let allPrice = 0;
 let totalPrice = 0;
+let profileName = '';
 
 /* 함수 선언*/
 
@@ -373,6 +374,7 @@ $(document).on('click','.event_question_btn',function(){
    let { selectedOptionList, selectedExtProdList } = setOptionList(optionLI);
 
    var priceObj		= new Object();
+   priceObj.profileName = profileName;
    priceObj.basicPrice = basicPrice;
    priceObj.totalPrice = totalPrice;
    
@@ -386,6 +388,7 @@ $(document).on('click','.event_question_btn',function(){
 $(document).ready(function () {
 
     basicPrice = parseInt($('.valid_price').text().replace(/[^\d]/g, ''));
+    profileName = $('.profile_name').text();
 
     $('.dropdown_toggle').click(function () {
         //console.log('dropdown_toggle!!!');
