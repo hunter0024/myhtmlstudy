@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="./test7Style.css" />
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<script>
+
+$(document).on('click','._input_form_submit',function(){
+  //console.log('_input_form_submit');
+  sessionStorage.clear();
+});
+
+
+  $(document).ready(function () {
+    function RollingList(listName) {
+      let listHeight = 0;
+      setInterval(function () {
+        listHeight = $(listName).find("li").outerHeight();
+        $(listName)
+          .find("ul")
+          .delay(500)
+          .animate(
+            {
+              top: -listHeight,
+            },
+            1000,
+            function () {
+              $(listName)
+                .find("ul")
+                .append($(listName).find("li").first().clone());
+              $(listName).find("ul").css("top", "0px");
+              $(listName).find("li").first().remove();
+            }
+          );
+      }, 4000);
+    }
+    RollingList($(".rolling_list_wrap"));
+
+    let priceInfo = JSON.parse(sessionStorage.getItem("priceInfo"));
+    let selectedExtProdList = JSON.parse(sessionStorage.getItem("selectedExtProdList"));
+    let textExtProd = '';
+    
+    if (priceInfo != null && priceInfo != ''){
+      //console.log("priceInfo basicPrice", priceInfo.basicPrice);
+      //console.log("priceInfo totalPrice", priceInfo.totalPrice);
+
+      if (selectedExtProdList != null && selectedExtProdList != '' ){
+        //console.log("selectedExtProdList", selectedExtProdList);
+
+        for(let prod of selectedExtProdList){
+          textExtProd+= '추가 상품명 : ' + prod.label + '\n' + '수량 : ' + prod.count.toLocaleString() + '\n' + '추가금액 : ' + prod.price.toLocaleString() + '원\n\n';
+        }
+
+      }
+      textExtProd+='총 금액 : ' +  priceInfo.totalPrice.toLocaleString()+'원';
+      //console.log('textExtProd', textExtProd);
+
+      $('#input_text_area_V4b4T1b0a2').attr("readonly" , true); 
+      $('#input_text_area_V4b4T1b0a2').val(textExtProd);
+    }
+  });
+</script>
+
+<div class="customers">
+  <div class="rolling_list_wrap">
+    <ul class="rolling_list">
+      <li>
+        <span class="customers_logo">롤링리스트1</span>
+      </li>
+      <li>
+        <span class="customers_logo">롤링리스트2</span>
+      </li>
+      <li>
+        <span class="customers_logo">롤링리스트3</span>
+      </li>
+      <li>
+        <span class="customers_logo">롤링리스트4</span>
+      </li>
+      <li>
+        <span class="customers_logo">롤링리스트5</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="form-group" id="textarea_V4b4T1b0a2">
+  <label for="input_text_area_V4b4T1b0a2" class="control-label">
+    견적액수가 여기에 입력되도록 / 이 값은 수정할수 없도록 락 걸어버리는것도
+    가능하다면 부탁합니다 김책임님 
+  </label>
+  <textarea class="form-control" rows="3"name="textarea_V4b4T1b0a2" placeholder=""id="input_text_area_V4b4T1b0a2"autocomplete="off"></textarea>
+</div>
